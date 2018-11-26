@@ -44,7 +44,7 @@
 
 |      항목       |          내용           |
 | :-------------: | :---------------------: |
-|    Extention    | React, Redux, styled component |
+|    Extention    | React, Redux, styled component, sweetalert |
 |    Language     | HTML5, CSS3, Javascript |
 |      HTTP       |          Axios          |
 | Package Manager |          Yarn           |
