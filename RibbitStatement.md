@@ -30,8 +30,7 @@
 
 |            역할            |  팀원  |
 | :------------------------: | :----: |
-|             PM             |  ???   |
-|     프론트엔드 개발자      | 김준우 |
+|    PM / 프론트엔드 개발자  | 김준우 |
 | 프론트엔드 개발자 / 디자인 | 이채은 |
 |     프론트엔드 개발자      | 이현승 |
 |       백엔드 개발자        | 신은주 |
@@ -54,14 +53,14 @@
 
 - 백엔드
 
-  |      항목      |          내용           |
-  | :------------: | :---------------------: |
-  |    DataBase    |          MySQL          |
-  |  Environment   | Amazon Web Services EC2 |
-  | Authentication |  Json Web Token based   |
-  |     Server     |      Python, Flask      |
-  |   Test Code    |     Python UnitTest     |
-  |   Web Server   |          Ngnix          |
+|      항목      |          내용           |
+| :------------: | :---------------------: |
+|    DataBase    |          MySQL          |
+|  Environment   | Amazon Web Services EC2 |
+| Authentication |  Json Web Token based   |
+|     Server     |      Python, Flask      |
+|   Test Code    |     Python UnitTest     |
+|   Web Server   |          Ngnix          |
 
 
 
