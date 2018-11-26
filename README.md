@@ -44,7 +44,7 @@
 
 |      항목       |          내용           |
 | :-------------: | :---------------------: |
-|    Extention    | React, Redux, styled component |
+|    Extention    | React, Redux, react-router styled component, sweetalert |
 |    Language     | HTML5, CSS3, Javascript |
 |      HTTP       |          Axios          |
 | Package Manager |          Yarn           |
@@ -103,6 +103,12 @@
 ### 타인 프로필 열람
 
 - 메인페이지와 동일
+
+### 메뉴바
+- 검색 기능
+- 홈 & 마이페이지 이동
+- 트윗하기 기능
+  - 배경이 검게 변하면서 창을 띄움
 
 ### 로그인/회원가입
 
