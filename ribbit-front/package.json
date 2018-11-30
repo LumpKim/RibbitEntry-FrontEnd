@@ -30,6 +30,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "eslint": "5.6.0",
+    "prettier-eslint": "^8.8.2",
     "webpack-cli": "^3.1.2"
   }
 }
