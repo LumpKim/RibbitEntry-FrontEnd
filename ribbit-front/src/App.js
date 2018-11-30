@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Header } from './components/index';
-import { Main } from './container/index';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Header } from "./components/index";
+import { Main } from "./container/index";
 
 class App extends Component {
   render() {
@@ -11,14 +11,12 @@ class App extends Component {
         <BrowserRouter>
           <React.Fragment>
             <Header />
-              <Switch>
+            <Switch>
+              {/* 메인 페이지*/}
+              <Route path="/" component={Main} exact />
 
-                {/* 메인 페이지*/}
-                <Route path='/' component={Main} exact/>
-
-                {/*  */}
-                
-              </Switch>
+              {/*  */}
+            </Switch>
           </React.Fragment>
         </BrowserRouter>
       </div>
