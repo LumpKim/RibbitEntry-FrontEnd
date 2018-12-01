@@ -3,6 +3,9 @@ import { RibbitIconTranslation } from '../../assets/index';
 import { Link } from 'react-router-dom'
 import './Header.css';
 
+// 스크롤 이벤트를 발생시키기 위한 변수
+let intervalld = 0;
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +13,21 @@ class Header extends Component {
       
     };
   }
+
+  // 스크롤을 0.0034초 마다 -50px씩 줄임.
+  // 스크롤이 0이 되면 setInterval 함수 실행을 중단.
+  scrollStep = () => {
+    if (window.pageYOffset === 0)
+      clearInterval(intervalld);
+
+    window.scroll(0, window.pageYOffset - 50);
+  }
+
+  // 비동기를 통한 window객체 조종
+  scrollToTop = async () => {
+    intervalld = await setInterval(this.scrollStep, 3.4);
+  }
+
   render() {
     return (
       <div className='topbar'>
@@ -19,7 +37,7 @@ class Header extends Component {
             <span>홈</span>
           </Link>
           <div className='filter' />
-          <div className='mainLogo'>
+          <div onClick={this.scrollToTop} className='mainLogo'>
             <img className='Logo' src={RibbitIconTranslation} alt="투명한배경의 로고"/>
           </div>
           <div className='filter' />
