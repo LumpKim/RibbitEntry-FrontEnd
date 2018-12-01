@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Header } from "./components/index";
-import { Main } from "./container/index";
+import { Main, User, Mypage } from "./container/index";
 
 class App extends Component {
   render() {
@@ -16,8 +16,12 @@ class App extends Component {
             <Switch>
               {/* 메인 페이지*/}
               <Route path="/" component={Main} exact />
+              
+              {/* 유저 정보 페이지 */}
+              <Route path='/:user' component={User} exact />
 
-              {/*  */}
+              {/* 마이페이지 */}
+              <Route path='/user/:user' component={Mypage} exact />
             </Switch>
           </React.Fragment>
         </BrowserRouter>
