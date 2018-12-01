@@ -11,6 +11,7 @@ class App extends Component {
         <BrowserRouter>
           <React.Fragment>
             <Header />
+            <div className='header__background'/>
             <Switch>
               {/* 메인 페이지*/}
               <Route path="/" component={Main} exact />
