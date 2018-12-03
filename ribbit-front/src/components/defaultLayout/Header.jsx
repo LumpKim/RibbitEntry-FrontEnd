@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { RibbitIconTranslation } from '../../assets/index';
+import { RibbitIconTranslation, FrogAudio } from '../../assets/index';
 import RibbitContainer from './RibbitContainer';
 import './Header.css';
 
 // 스크롤 이벤트를 발생시키기 위한 변수
 let intervalld = 0;
+const FlogAudioSound = new Audio(FrogAudio);
 
 class Header extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Header extends Component {
 
   // 비동기를 통한 window객체 조종
   scrollToTop = async () => {
+    FlogAudioSound.play();
     intervalld = await setInterval(this.scrollStep, 3.4);
   };
 
