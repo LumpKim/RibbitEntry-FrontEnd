@@ -4,8 +4,5 @@ import RibbitOff from './Ribbit-off.png';
 import TalkingBalloon from './TalkingBalloon.png';
 
 export {
-  RibbitIconTranslation,
-  RibbitIcon,
-  RibbitOff,
-  TalkingBalloon
-}
+  RibbitIconTranslation, RibbitIcon, RibbitOff, TalkingBalloon,
+};
