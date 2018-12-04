@@ -95,4 +95,5 @@
   position: fixed;
   z-index: 4000;
   background: rgba(0, 0, 0, 0.6);
+  overflow-y: hidden;
 }

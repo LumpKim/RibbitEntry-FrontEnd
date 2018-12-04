@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { RibbitIconTranslation, FrogAudio } from '../../assets/index';
 import RibbitContainer from './RibbitContainer';
-import './Header.css';
+import './css/Header.css';
 
 // 스크롤 이벤트를 발생시키기 위한 변수
 let intervalld = 0;
