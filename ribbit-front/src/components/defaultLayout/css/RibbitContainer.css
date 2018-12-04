@@ -1,0 +1,10 @@
+.Ribbit__Modal {
+  border-radius: 2%;
+  width: 44%x;
+  height: 230px;
+  position: relative;
+  top: 7%;
+  border: 1px solid black;
+  background: black;
+  z-index: 4001;
+}
