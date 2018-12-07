@@ -7,6 +7,10 @@
     "node": true
   },
   "rules": {
+    "no-shadow": 0,
+    "eslint no-alert": 0,
+    "no-unused-vars": 0,
+    "react/no-unused-state": 0,
     "react/prefer-es6-class": 1,
     "react/prefer-stateless-function": 1,
     "react/no-multi-comp": 1,
