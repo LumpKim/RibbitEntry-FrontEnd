@@ -21,13 +21,25 @@
 
 .Ribbit__Header .RibbitHeader__Content {
   font-size: 28px;
-  width: calc(100% - 24px);
+  font-weight: bold;
+  width: calc(100% - 32px);
   height: calc(100% - 24px);
   text-align: center;
 }
 
+.RibbitHeader__Content .HeaderContent__Title {
+  display: inline-block;
+  height: 100%;
+  line-height: 200%;
+  margin-right: -28px;
+}
+
 .RibbitHeader__Content .HeaderContent__Close {
   float: right;
+  display: inline-block;
+  height: 100%;
+  line-height: 200%;
+  cursor: pointer;
 }
 
 .Ribbit__body {
@@ -37,4 +49,26 @@
   border-top: 2px solid #a5d6a7;
   background-color: #a5d6a7;
   background: rgba(165, 214, 167, 0.6);
+}
+
+.Ribbit__body .RibbitBody__Content {
+  margin: 8px 12px;
+  border: 2px solid #a5d6a7;
+  border-radius: 25px;
+  width: calc(100% - 56px);
+  height: calc(60% - 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.RibbitBody__Content .BodyContent__Text {
+  font-family: "NanumSquare";
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  width: calc(100% + 2px);
+  height: calc(100% - 4px);
 }
