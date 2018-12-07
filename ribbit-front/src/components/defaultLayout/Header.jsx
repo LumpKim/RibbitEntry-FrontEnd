@@ -11,7 +11,11 @@ const FlogAudioSound = new Audio(FrogAudio);
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      ribbitTurn: false,
+      ribbitCancle: false,
+      ribbitData: '',
+    };
   }
 
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
@@ -30,14 +34,37 @@ class Header extends Component {
 
   // 리빗을 클릭시 배경이 나오게 하는 함수.
   ChangeRibbitToggle = () => {
-    const { ribbitTurn } = this.state;
+    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
+
+    if (ribbitData !== '') {
+      this.setState({
+        ribbitCancle: ribbitTurn ? !ribbitCancle : false,
+      });
+    } else {
+      this.setState({
+        ribbitTurn: !ribbitTurn,
+      });
+    }
+  };
+
+  // alert창에서 취소 클릭 시 유지시키는 함수
+  RibbitCancle = () => {
+    const { ribbitCancle } = this.state;
+
     this.setState({
-      ribbitTurn: !ribbitTurn,
+      ribbitCancle: !ribbitCancle,
+    });
+  };
+
+  // textarea의 데이터를 불러서 state에 담음.
+  GetTextData = (e) => {
+    this.setState({
+      ribbitData: e.target.value,
     });
   };
 
   render() {
-    const { ribbitTurn } = this.state;
+    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
     return (
       <React.Fragment>
         <div
@@ -45,7 +72,13 @@ class Header extends Component {
           style={ribbitTurn ? { display: 'flex' } : { display: 'none' }}
           className="ribbit__background"
         >
-          <RibbitContainer Turn={ribbitTurn} />
+          <RibbitContainer
+            data={ribbitData}
+            ribbitData={this.GetTextData}
+            Change={this.ChangeRibbitToggle}
+            ribbitCancle={ribbitCancle}
+            KeepChange={this.RibbitCancle}
+          />
         </div>
         <div className="topbar">
           <div className="topbar-content">
