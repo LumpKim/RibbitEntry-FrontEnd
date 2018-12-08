@@ -63,6 +63,17 @@ class Header extends Component {
     });
   };
 
+  // 리빗 취소를 결정하는 함수
+  DeleteRibbit = () => {
+    const { ribbitTurn, ribbitCancle, ribbitData } = this.state;
+
+    this.setState({
+      ribbitTurn: !ribbitTurn,
+      ribbitCancle: !ribbitCancle,
+      ribbitData: '',
+    });
+  };
+
   render() {
     const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
     return (
@@ -78,6 +89,7 @@ class Header extends Component {
             Change={this.ChangeRibbitToggle}
             ribbitCancle={ribbitCancle}
             KeepChange={this.RibbitCancle}
+            Delete={this.DeleteRibbit}
           />
         </div>
         <div className="topbar">
