@@ -25,20 +25,18 @@
   width: calc(100% - 32px);
   height: calc(100% - 24px);
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .RibbitHeader__Content .HeaderContent__Title {
-  display: inline-block;
-  height: 100%;
-  line-height: 200%;
   margin-right: -28px;
+  margin-left: auto;
 }
 
 .RibbitHeader__Content .HeaderContent__Close {
-  float: right;
-  display: inline-block;
-  height: 100%;
-  line-height: 200%;
+  margin-left: auto;
   cursor: pointer;
 }
 
