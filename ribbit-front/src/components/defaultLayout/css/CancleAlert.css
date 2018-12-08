@@ -10,3 +10,70 @@
   background: rgba(0, 0, 0, 0.5);
   overflow-y: hidden;
 }
+
+.PopUp__background .PopUp__Container {
+  background-color: #fff;
+  border-radius: 25px;
+  width: 36%;
+  height: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.PopUp__Container .RibbitPopup__Head {
+  flex-grow: 1;
+  width: 94%;
+  font-size: 28px;
+  font-weight: bold;
+  border-bottom: 1px solid #e6ecf0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.RibbitPopup__Head .PopupHead__Title {
+  margin-left: auto;
+  margin-right: -28px;
+}
+
+.RibbitPopup__Head .PopupHead__Close {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.PopUp__Container .RibbitPopup__Body {
+  flex-grow: 1;
+  width: 94%;
+  font-size: 20px;
+  border-bottom: 1px solid #e6ecf0;
+  display: flex;
+  align-items: center;
+}
+
+.PopUp__Container .RibbitPopup__Foot {
+  flex-grow: 1;
+  width: 94%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.RibbitPopup__Foot .RibbitFoot__Cancle {
+  margin-left: auto;
+  border: 1px solid #66757f;
+  padding: 8px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.RibbitPopup__Foot .RibbitFoot__Delete {
+  margin-left: 20px;
+  padding: 8px 16px;
+  background-color: #3fd144;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
