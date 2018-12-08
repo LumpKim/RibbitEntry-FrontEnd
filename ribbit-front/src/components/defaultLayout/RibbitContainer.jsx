@@ -15,11 +15,11 @@ class RibbitContainer extends Component {
 
   render() {
     const {
-      Change, ribbitData, data, ribbitCancle, KeepChange,
+      Change, ribbitData, data, ribbitCancle, KeepChange, Delete,
     } = this.props;
     return (
       <div onClick={event => this.MaintainContent(event)} className="Ribbit__Modal">
-        <CancleAlert KeepChange={KeepChange} ribbitCancle={ribbitCancle} />
+        <CancleAlert KeepChange={KeepChange} ribbitCancle={ribbitCancle} DeleteRibbit={Delete} />
         <div className="Ribbit__Header">
           <div className="RibbitHeader__Content">
             <span className="HeaderContent__Title">새로운 리빗 작성</span>
