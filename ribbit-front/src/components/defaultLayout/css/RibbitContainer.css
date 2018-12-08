@@ -47,6 +47,10 @@
   border-top: 2px solid #a5d6a7;
   background-color: #a5d6a7;
   background: rgba(165, 214, 167, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Ribbit__body .RibbitBody__Content {
@@ -69,4 +73,33 @@
   font-size: 24px;
   width: calc(100% + 2px);
   height: calc(100% - 4px);
+}
+
+.RibbitBody__Menu {
+  width: calc(100% - 56px);
+  height: calc(28% - 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.RibbitBody__Menu .BodyMenu__Image {
+  font-size: 46px;
+  color: #61d665;
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.RibbitBody__Menu .BodyMenu__Ribbit {
+  background-color: #61d665;
+  padding: 10px 24px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: -12px;
 }
