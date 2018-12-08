@@ -15,6 +15,9 @@ class Header extends Component {
       ribbitTurn: false,
       ribbitCancle: false,
       ribbitData: '',
+      ribbitImage1: '',
+      ribbitImage2: '',
+      ribbitImage3: '',
     };
   }
 
@@ -65,7 +68,7 @@ class Header extends Component {
 
   // 리빗 취소를 결정하는 함수
   DeleteRibbit = () => {
-    const { ribbitTurn, ribbitCancle, ribbitData } = this.state;
+    const { ribbitTurn, ribbitCancle } = this.state;
 
     this.setState({
       ribbitTurn: !ribbitTurn,
@@ -75,7 +78,14 @@ class Header extends Component {
   };
 
   render() {
-    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
+    const {
+      ribbitTurn,
+      ribbitData,
+      ribbitCancle,
+      ribbitImage1,
+      ribbitImage2,
+      ribbitImage3,
+    } = this.state;
     return (
       <React.Fragment>
         <div
@@ -90,6 +100,9 @@ class Header extends Component {
             ribbitCancle={ribbitCancle}
             KeepChange={this.RibbitCancle}
             Delete={this.DeleteRibbit}
+            ribbitImage1={ribbitImage1}
+            ribbitImage2={ribbitImage2}
+            ribbitImage3={ribbitImage3}
           />
         </div>
         <div className="topbar">
