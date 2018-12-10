@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import './css/RibbitContainer.css';
 import CancleAlert from './CancleAlert';
+import ImageContent from './ImageContent';
 
 class RibbitContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       count: 1,
+      ribbitImage1: '',
+      ribbitImage2: '',
+      ribbitImage3: '',
+      ribbitImage4: '',
+    };
+  }
+
+  componentDidMount() {
+    // ribbitImage가 DeleteRibbit함수에서 작동하도록 하는 함수
+    this.DeleteRibbitImage = (Delete) => {
+      this.setState({
+        ribbitImage1: '',
+        ribbitImage2: '',
+        ribbitImage3: '',
+        ribbitImage4: '',
+        count: 1,
+      });
+      Delete();
     };
   }
 
@@ -29,18 +48,23 @@ class RibbitContainer extends Component {
 
     if (count === 1) {
       this.setState({
-        ribbitImage1: data,
         count: count + 1,
+        ribbitImage1: data,
       });
     } else if (count === 2) {
       this.setState({
-        ribbitImage2: data,
         count: count + 1,
+        ribbitImage2: data,
       });
     } else if (count === 3) {
       this.setState({
-        ribbitImage3: data,
         count: count + 1,
+        ribbitImage3: data,
+      });
+    } else if (count === 4) {
+      this.setState({
+        count: count + 1,
+        ribbitImage4: data,
       });
     } else {
       alert('이미지 한도를 초과하였습니다.');
@@ -58,17 +82,68 @@ class RibbitContainer extends Component {
     e.target.value = null;
   };
 
+  // 이미지 파일 삭제 하는 함수
+  DeleteImage = (number) => {
+    const { count } = this.state;
+
+    if (number === 1) {
+      if (count === 3 || count === 4 || count === 5) {
+        alert('다음 이미지가 남아있습니다.');
+      } else {
+        this.setState({
+          count: count - 1,
+          ribbitImage1: '',
+        });
+      }
+    } else if (number === 2) {
+      if (count === 4 || count === 5) {
+        alert('다음 이미지가 남아있습니다.');
+      } else {
+        this.setState({
+          count: count - 1,
+          ribbitImage2: '',
+        });
+      }
+    } else if (number === 3) {
+      if (count === 5) {
+        alert('다음 이미지가 남아있습니다.');
+      } else {
+        this.setState({
+          count: count - 1,
+          ribbitImage3: '',
+        });
+      }
+    } else if (number === 4) {
+      this.setState({
+        count: count - 1,
+        ribbitImage4: '',
+      });
+    } else {
+      alert('삭제할 이미지가 존재하지 않습니다.');
+    }
+  };
+
   render() {
     const {
       Change, ribbitData, data, ribbitCancle, KeepChange, Delete,
     } = this.props;
+    const {
+      ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4,
+    } = this.state;
     return (
       <div onClick={event => this.MaintainContent(event)} className="Ribbit__Modal">
-        <CancleAlert KeepChange={KeepChange} ribbitCancle={ribbitCancle} DeleteRibbit={Delete} />
+        <CancleAlert
+          KeepChange={KeepChange}
+          ribbitCancle={ribbitCancle}
+          DeleteRibbit={() => this.DeleteRibbitImage(Delete)}
+        />
         <div className="Ribbit__Header">
           <div className="RibbitHeader__Content">
             <span className="HeaderContent__Title">새로운 리빗 작성</span>
-            <i onClick={Change} className="fas fa-times HeaderContent__Close" />
+            <i
+              onClick={() => Change('asdf')}
+              className="fas fa-times HeaderContent__Close"
+            />
           </div>
         </div>
         <div className="Ribbit__body">
@@ -99,6 +174,13 @@ class RibbitContainer extends Component {
                 id="Ribbit__AddImage"
               />
             </label>
+            <ImageContent
+              ribbitImage1={ribbitImage1}
+              ribbitImage2={ribbitImage2}
+              ribbitImage3={ribbitImage3}
+              ribbitImage4={ribbitImage4}
+              Delete={this.DeleteImage}
+            />
             <div className="BodyMenu__Ribbit">
               <span className="BodyMenu__Ribbit__Text">리빗하기</span>
             </div>
