@@ -15,9 +15,6 @@ class Header extends Component {
       ribbitTurn: false,
       ribbitCancle: false,
       ribbitData: '',
-      ribbitImage1: '',
-      ribbitImage2: '',
-      ribbitImage3: '',
     };
   }
 
@@ -78,14 +75,7 @@ class Header extends Component {
   };
 
   render() {
-    const {
-      ribbitTurn,
-      ribbitData,
-      ribbitCancle,
-      ribbitImage1,
-      ribbitImage2,
-      ribbitImage3,
-    } = this.state;
+    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
     return (
       <React.Fragment>
         <div
@@ -100,9 +90,6 @@ class Header extends Component {
             ribbitCancle={ribbitCancle}
             KeepChange={this.RibbitCancle}
             Delete={this.DeleteRibbit}
-            ribbitImage1={ribbitImage1}
-            ribbitImage2={ribbitImage2}
-            ribbitImage3={ribbitImage3}
           />
         </div>
         <div className="topbar">
