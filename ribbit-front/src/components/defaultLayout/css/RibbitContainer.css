@@ -87,7 +87,6 @@
 .RibbitBody__Menu .BodyMenu__Image {
   font-size: 46px;
   color: #61d665;
-  margin-right: auto;
   cursor: pointer;
 }
 
@@ -102,4 +101,5 @@
   font-weight: bold;
   cursor: pointer;
   margin-right: -12px;
+  margin-left: auto;
 }

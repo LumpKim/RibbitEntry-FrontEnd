@@ -1,0 +1,12 @@
+.Ribbit__Image--Container {
+  display: flex;
+}
+
+.Ribbit__Image--Container .Ribbit__Image--Content {
+  background: #fff;
+  width: 32px;
+  height: 32px;
+  margin-right: 15px;
+  cursor: pointer;
+  border: 2px double #84d687;
+}
