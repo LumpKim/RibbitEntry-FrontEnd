@@ -23,8 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock'
 
-# scripts
-/scripts
+# # scripts
+# /scripts
 
-#config
-/config
+# #config
+# /config
