@@ -1,0 +1,13 @@
+.Main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Main__Content {
+  width: 1880px;
+  padding-top: 16px;
+  display: flex;
+}
+
+/* #e6ecf0 <- 트위터에서 흰색 대체 */
