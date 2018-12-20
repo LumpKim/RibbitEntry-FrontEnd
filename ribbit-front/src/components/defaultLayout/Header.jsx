@@ -33,10 +33,15 @@ class Header extends Component {
   };
 
   // 리빗을 클릭시 배경이 나오게 하는 함수.
-  ChangeRibbitToggle = () => {
+  ChangeRibbitToggle = (ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4) => {
     const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
-
-    if (ribbitData !== '') {
+    if (
+      ribbitData !== ''
+      || ribbitImage1 === ''
+      || ribbitImage2 === ''
+      || ribbitImage3 === ''
+      || ribbitImage4 === ''
+    ) {
       this.setState({
         ribbitCancle: ribbitTurn ? !ribbitCancle : false,
       });
@@ -79,7 +84,7 @@ class Header extends Component {
     return (
       <React.Fragment>
         <div
-          onClick={this.ChangeRibbitToggle}
+          onClick={() => this.ChangeRibbitToggle()}
           style={ribbitTurn ? { display: 'flex' } : { display: 'none' }}
           className="ribbit__background"
         >
