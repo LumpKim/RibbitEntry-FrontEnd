@@ -141,7 +141,7 @@ class RibbitContainer extends Component {
           <div className="RibbitHeader__Content">
             <span className="HeaderContent__Title">새로운 리빗 작성</span>
             <i
-              onClick={() => Change('asdf')}
+              onClick={() => Change(ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4)}
               className="fas fa-times HeaderContent__Close"
             />
           </div>
