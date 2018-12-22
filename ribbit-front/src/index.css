@@ -4,17 +4,9 @@ body {
 }
 
 /* a태그 하이라이트 숨기기 */
-a:link {
-  color: none;
-  text-decoration: none;
-}
-a:visited {
-  color: none;
-  text-decoration: none;
-}
-a:hover {
-  color: none;
-  text-decoration: none;
+a {
+  all: unset;
+  cursor: pointer;
 }
 
 /* flex filter */
