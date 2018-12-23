@@ -6,6 +6,7 @@
   display: flex;
   position: fixed;
   justify-content: center;
+  z-index: 3000;
 }
 
 .topbar-content {
