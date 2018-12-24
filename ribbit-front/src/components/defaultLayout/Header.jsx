@@ -21,7 +21,12 @@ class Header extends Component {
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
   // 스크롤이 0이 되면 setInterval 함수 실행을 중단.
   scrollStep = () => {
-    if (window.pageYOffset === 0) clearInterval(intervalld);
+    if (window.pageYOffset === 0) {
+      clearInterval(intervalld);
+      setTimeout(() => {
+        window.location.reload();
+      }, 320);
+    }
 
     window.scroll(0, window.pageYOffset - 50);
   };
