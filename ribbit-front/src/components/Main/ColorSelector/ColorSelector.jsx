@@ -57,10 +57,9 @@ class ColorSelector extends Component {
 
   render() {
     const { colors, SelectColor } = this.state;
-    // 빨강, 주황, 노랑, 초록, 하늘, 파랑, 보라, 자주, 사용자
     return (
       <div className="MainContent__ColorSelector">
-        <div className="ColorSelector__HeaderContainer">
+        <div style={{ background: SelectColor }} className="ColorSelector__HeaderContainer">
           <p className="HeaderContainer__Title">테마 색상 수정</p>
           <div className="HeaderContainer__Colors">
             {colors.map((item, index) => (

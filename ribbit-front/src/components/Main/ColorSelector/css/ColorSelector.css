@@ -128,7 +128,7 @@
   position: absolute;
   font-size: 18px;
   color: #fff;
-  background: #84d687;
+  background: #000;
 }
 
 .BodyContainer__List .BodyList__item:nth-child(7):hover::before,
@@ -137,5 +137,5 @@
   position: absolute;
   font-size: 18px;
   color: #fff;
-  background: #84d687;
+  background: #000;
 }
