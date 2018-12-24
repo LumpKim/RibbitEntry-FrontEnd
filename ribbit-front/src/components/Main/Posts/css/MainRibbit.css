@@ -1,0 +1,57 @@
+.MainPosts__MainRibbit {
+  width: 1050px;
+  padding: 22px 0;
+  background: rgba(132, 214, 135, 0.2);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainPosts__MainRibbit > .MainRibbit__Content {
+  width: 950px;
+  display: flex;
+  align-items: center;
+}
+
+.MainRibbit__Content .MainRibbitContent__UserProfileCover {
+  width: 50px;
+  height: 50px;
+  background: #dee2e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  margin-right: 12px;
+  overflow: hidden;
+}
+
+.MainRibbitContent__UserProfileCover .MainRibbitContent__UserProfile {
+  font-size: 50px;
+  color: #a5d6a7;
+}
+
+.MainRibbit__Content .MainRibbitContent__InputCover {
+  width: 900px;
+  border: 3px solid #a5d6a7;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__Input {
+  width: 804px;
+  height: 42px;
+  border-radius: 15px;
+  border: none;
+  background: transparent;
+  line-height: 22px;
+  padding-top: 21px;
+  padding-left: 16px;
+  font-size: 20px;
+  overflow-y: hidden;
+  resize: "none";
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__Input:focus {
+}
