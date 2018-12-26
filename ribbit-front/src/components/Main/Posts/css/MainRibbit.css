@@ -4,6 +4,7 @@
   background: rgba(132, 214, 135, 0.2);
   border: none;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -11,7 +12,6 @@
 .MainPosts__MainRibbit > .MainRibbit__Content {
   width: 950px;
   display: flex;
-  align-items: center;
 }
 
 .MainRibbit__Content .MainRibbitContent__UserProfileCover {
@@ -24,6 +24,7 @@
   border-radius: 25px;
   margin-right: 12px;
   overflow: hidden;
+  margin-top: 10.5px;
 }
 
 .MainRibbitContent__UserProfileCover .MainRibbitContent__UserProfile {
@@ -33,15 +34,14 @@
 
 .MainRibbit__Content .MainRibbitContent__InputCover {
   width: 900px;
-  border: 3px solid #a5d6a7;
+  border: 1px solid #a5d6a7;
   border-radius: 15px;
   display: flex;
-  align-items: center;
 }
 
 .MainRibbitContent__InputCover .MainRibbitInputCover__Input {
   width: 804px;
-  height: 42px;
+  min-height: 42px;
   border-radius: 15px;
   border: none;
   background: transparent;
@@ -50,8 +50,24 @@
   padding-left: 16px;
   font-size: 20px;
   overflow-y: hidden;
-  resize: "none";
+  resize: none;
 }
 
-.MainRibbitContent__InputCover .MainRibbitInputCover__Input:focus {
+.MainRibbitContent__InputCover .MainRibbitInputCover__Input::placeholder {
+  color: rgb(132, 214, 135);
+  font-weight: bold;
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__HappinessIcon {
+  height: 40px;
+  font-size: 40px;
+  margin-left: 6px;
+  color: rgb(132, 214, 135);
+  cursor: pointer;
+  margin-top: 10.5px;
+}
+
+.MainPosts__MainRibbit .MainRibbit__ImageContent {
+  width: 855px;
+  margin-top: 20px;
 }
