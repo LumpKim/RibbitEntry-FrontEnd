@@ -7,6 +7,7 @@
     "node": true
   },
   "rules": {
+    "no-param-reassign": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "no-shadow": 0,
     "eslint no-alert": 0,
