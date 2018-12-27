@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/defaultLayout/Header';
 import {
-  Main, User, MainMyPage, Following, Followers,
+  Main, User, MainMyPage, Following, Followers, Login,
 } from './container/index';
 
 const App = () => (
@@ -20,7 +20,7 @@ const App = () => (
           <Route path="/:user" component={User} exact />
           {/* 유저 정보 페이지 */}
 
-          <Route path="/user/:user" component={MainMyPage} exact />
+          <Route path="/username/:user" component={MainMyPage} exact />
           {/* 마이페이지 */}
 
           <Route path="/user/:user/following" component={Following} exact />
@@ -28,6 +28,9 @@ const App = () => (
 
           <Route path="/user/:user/followers" component={Followers} exact />
           {/* 마이페이지 팔로워 */}
+
+          <Route path="/user/login" component={Login} exact />
+          {/* 로그인 페이지 */}
         </Switch>
       </React.Fragment>
     </BrowserRouter>
