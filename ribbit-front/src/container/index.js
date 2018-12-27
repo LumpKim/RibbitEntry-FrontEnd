@@ -3,6 +3,7 @@ import User from './User/User';
 import MainMyPage from './MyPage/Mypage';
 import Following from './MyPage/Following/Following';
 import Followers from './MyPage/Followers/Followers';
+import Login from './Regiseter/Login';
 
 export {
   // 메인페이지
@@ -15,4 +16,6 @@ export {
   Following,
   // 팔로워
   Followers,
+  // 로그인
+  Login,
 };

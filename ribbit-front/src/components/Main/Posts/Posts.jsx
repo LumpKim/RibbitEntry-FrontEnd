@@ -5,7 +5,11 @@ import MainRibbit from './MainRibbit';
 class Posts extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      post: [
+        //
+      ],
+    };
   }
 
   render() {

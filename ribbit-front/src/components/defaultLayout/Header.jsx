@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { RibbitIconTranslation, FrogAudio } from '../../assets/index';
 import RibbitContainer from './RibbitContainer';
 import './css/Header.css';
@@ -15,7 +16,14 @@ class Header extends Component {
       ribbitTurn: false,
       ribbitCancle: false,
       ribbitData: '',
+      UserData: '',
     };
+  }
+
+  componentDidMount() {
+    axios.get('ribbit.jaehoon.kim:5000/api/login').then((res) => {
+      this.setState({ UserData: res });
+    });
   }
 
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
@@ -85,7 +93,9 @@ class Header extends Component {
   };
 
   render() {
-    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
+    const {
+      ribbitTurn, ribbitData, ribbitCancle, UserData,
+    } = this.state;
     return (
       <React.Fragment>
         <div
@@ -114,7 +124,10 @@ class Header extends Component {
             </div>
             <div className="filter" />
             <div className="features">
-              <Link to={`/user/${'1'}`} className="header__profile">
+              <Link
+                to={UserData ? `/username/${UserData}` : '/user/login'}
+                className="header__profile"
+              >
                 {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
                 <i className="fas fa-user user__profile" />
                 {' '}
