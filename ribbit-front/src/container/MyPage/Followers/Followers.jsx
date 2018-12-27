@@ -1,5 +1,10 @@
 import React from 'react';
+import MainProfile from '../../../components/MyPage/Profile/MainProfile';
 
-const Followers = () => <div>안녕하세요. 팔로워임다</div>;
+const Followers = () => (
+  <div>
+    <MainProfile />
+  </div>
+);
 
 export default Followers;

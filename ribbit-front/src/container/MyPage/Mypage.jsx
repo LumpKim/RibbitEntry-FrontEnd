@@ -1,9 +1,9 @@
 import React from 'react';
-import Profile from '../../components/MyPage/Profile/Profile';
+import MainProfile from '../../components/MyPage/Profile/MainProfile';
 
 const Mypage = () => (
   <div>
-    <Profile />
+    <MainProfile />
   </div>
 );
 

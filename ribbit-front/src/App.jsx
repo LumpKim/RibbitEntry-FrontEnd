@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/defaultLayout/Header';
 import {
-  Main, User, Mypage, Following, Followers,
+  Main, User, MainMyPage, Following, Followers,
 } from './container/index';
 
 const App = () => (
@@ -20,7 +20,7 @@ const App = () => (
           <Route path="/:user" component={User} exact />
           {/* 유저 정보 페이지 */}
 
-          <Route path="/user/:user" component={Mypage} exact />
+          <Route path="/user/:user" component={MainMyPage} exact />
           {/* 마이페이지 */}
 
           <Route path="/user/:user/following" component={Following} exact />
