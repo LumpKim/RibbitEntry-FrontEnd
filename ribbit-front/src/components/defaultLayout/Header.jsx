@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { RibbitIconTranslation, FrogAudio } from '../../assets/index';
 import RibbitContainer from './RibbitContainer';
 import './css/Header.css';
 
 // 스크롤 이벤트를 발생시키기 위한 변수
-let intervalld = 0;
+const intervalld = 0;
 const FlogAudioSound = new Audio(FrogAudio);
 
 class Header extends Component {
@@ -16,14 +15,8 @@ class Header extends Component {
       ribbitTurn: false,
       ribbitCancle: false,
       ribbitData: '',
-      UserData: '',
+      UserName: '',
     };
-  }
-
-  componentDidMount() {
-    axios.get('ribbit.jaehoon.kim:5000/api/login').then((res) => {
-      this.setState({ UserData: res });
-    });
   }
 
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
@@ -42,7 +35,7 @@ class Header extends Component {
   // 비동기를 통한 window객체 조종
   scrollToTop = async () => {
     FlogAudioSound.play();
-    intervalld = await setInterval(this.scrollStep, 3.4);
+    const intervalld = await setInterval(this.scrollStep, 3.4);
   };
 
   // 리빗을 클릭시 배경이 나오게 하는 함수.
@@ -94,8 +87,9 @@ class Header extends Component {
 
   render() {
     const {
-      ribbitTurn, ribbitData, ribbitCancle, UserData,
+      ribbitTurn, ribbitData, ribbitCancle, UserName,
     } = this.state;
+    const { Whether } = this.props;
     return (
       <React.Fragment>
         <div
@@ -124,18 +118,18 @@ class Header extends Component {
             </div>
             <div className="filter" />
             <div className="features">
-              <Link
-                to={UserData ? `/username/${UserData}` : '/user/login'}
-                className="header__profile"
-              >
-                {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
-                <i className="fas fa-user user__profile" />
-                {' '}
-              </Link>
-              <div className="filter" />
-              <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
-                <span className="ribbit__text">리빗</span>
-              </div>
+              {Whether ? (
+                <React.Fragment>
+                  <Link to={`/username/${UserName}`} className="header__profile">
+                    {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
+                    <i className="fas fa-user user__profile" />{' '}
+                  </Link>
+                  <div className="filter" />
+                  <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
+                    <span className="ribbit__text">리빗</span>
+                  </div>
+                </React.Fragment>
+              ) : null}
             </div>
           </div>
         </div>
