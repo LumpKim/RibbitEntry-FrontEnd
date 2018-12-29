@@ -1,0 +1,20 @@
+.SignUp__Container {
+  width: 800px;
+  height: 887px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6ecf0;
+}
+
+.SignUp__Container .SignUpContainer__Content {
+  width: 500px;
+  height: 550px;
+  /* background: #000; */
+}
+
+.SignUp__Container .SignUp__Header {
+  widows: 500px;
+  height: 200px;
+  background: #000;
+}
