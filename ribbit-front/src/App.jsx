@@ -30,11 +30,7 @@ class App extends Component {
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
-              <Route
-                path="/"
-                component={() => <Main Whether={Whether} HandleWhether={this.HandleWhether} />}
-                exact
-              />
+              <Route path="/" component={() => <Main Whether={Whether} />} exact />
               {/* 메인 페이지 */}
 
               <Route path="/:user" component={User} exact />
@@ -49,7 +45,11 @@ class App extends Component {
               <Route path="/username/:user/followers" component={Followers} exact />
               {/* 마이페이지 팔로워 */}
 
-              <Route path="/user/login" component={Login} exact />
+              <Route
+                path="/user/login"
+                component={() => <Login HandleWhether={this.HandleWhether} />}
+                exact
+              />
               {/* 로그인 페이지 */}
 
               <Route path="/user/signup" component={Signup} exact />
