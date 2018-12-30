@@ -3,7 +3,7 @@ import './css/Main.css';
 import { Profile, Posts, ColorSelector } from '../../components/Main/index';
 import Register from '../../components/Regiseter/Register/Register';
 
-const Main = ({ Whether, HandleWhether }) => (
+const Main = ({ Whether }) => (
   <div className="Main">
     {Whether ? (
       <div className="Main__Content">
@@ -15,7 +15,7 @@ const Main = ({ Whether, HandleWhether }) => (
       </div>
     ) : (
       <div className="Main__Register">
-        <Register HandleWhether={HandleWhether} />
+        <Register />
       </div>
     )}
   </div>

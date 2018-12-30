@@ -145,7 +145,6 @@ class MainRibbit extends Component {
               className="far fa-image MainRibbitInputCover__HappinessIcon"
               id="Image_File_Label_Main"
               htmlFor="Ribbit__AddImage_Main"
-              onClick={() => console.log(MainribbitImage1)}
             >
               <input
                 style={{ display: 'none' }}
