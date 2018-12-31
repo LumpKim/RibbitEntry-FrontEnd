@@ -9,6 +9,7 @@ class Login extends Component {
     this.state = {
       Id: '',
       PassWord: '',
+      UserException: false,
     };
   }
 
@@ -20,16 +21,27 @@ class Login extends Component {
 
   PostUserData = () => {
     const { Id, PassWord } = this.state;
+    const { HandleWhether } = this.props;
     const data = JSON.stringify({
       userId: `${Id}`,
       password: `${PassWord}`,
     });
 
-    axios.post('http://ribbit.jaehoon.kim:5000/api/login');
+    axios
+      .post('http://ribbit.jaehoon.kim:5000/api/login', data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then((res) => {
+        alert('로그인이 완료되었습니다!');
+        HandleWhether();
+      })
+      .catch((res) => {
+        alert('정보가 옳바르지 않습니다.');
+      });
   };
 
   render() {
-    const { HandleWhether } = this.props;
+    const { UserException } = this.state;
     return (
       <div className="Login__Container">
         <div className="LoginContainer__Content">
@@ -63,8 +75,7 @@ class Login extends Component {
                 />
               </label>
               <Link
-                // to={UserException ? '/' : '/user/Login'}
-                to="/"
+                to={UserException ? '/' : '/user/Login'}
                 className="LoginForm__Submit"
                 onClick={() => this.PostUserData()}
               >

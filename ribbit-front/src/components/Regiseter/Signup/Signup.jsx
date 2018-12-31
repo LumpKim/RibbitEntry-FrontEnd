@@ -19,7 +19,7 @@ class Signup extends Component {
     this.setState({
       [e.target.name]: e.target.value,
       UserException: !!(
-        /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,12})$/.test(Id)
+        /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id)
         && /^[a-z0-9_-]+/.test(PassWord)
         && /^[a-z0-9_-]+/.test(NickName)
       ),
@@ -35,7 +35,7 @@ class Signup extends Component {
     });
 
     if (
-      /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,12})$/.test(Id)
+      /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id)
       && /^[a-z0-9_-]+/.test(PassWord)
       && /^[a-z0-9_-]+/.test(NickName)
     ) {
