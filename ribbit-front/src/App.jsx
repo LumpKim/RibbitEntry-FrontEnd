@@ -9,28 +9,27 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      Whether: false,
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    localStorage.setItem('whether', false);
   }
 
   HandleWhether = () => {
-    this.setState({
-      Whether: true,
-    });
+    localStorage.setItem('whether', true);
   };
 
   render() {
-    const { Whether } = this.state;
     return (
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Header Whether={Whether} />
+            <Header Whether={localStorage.Whether} />
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
-              <Route path="/" component={() => <Main Whether={Whether} />} exact />
+              <Route path="/" component={() => <Main Whether={localStorage.Whether} />} exact />
               {/* 메인 페이지 */}
 
               <Route path="/:user" component={User} exact />
