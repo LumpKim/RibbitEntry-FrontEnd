@@ -85,6 +85,16 @@ class Header extends Component {
     });
   };
 
+  HandleUserDropdown = () => {
+    const target = document.getElementById('user__dropDown');
+
+    if (target.style.display === 'none') {
+      target.style.display = 'flex';
+    } else {
+      target.style.display = 'none';
+    }
+  };
+
   render() {
     const {
       ribbitTurn, ribbitData, ribbitCancle, UserName,
@@ -118,18 +128,26 @@ class Header extends Component {
             </div>
             <div className="filter" />
             <div className="features">
-              {Whether ? (
-                <React.Fragment>
-                  <Link to={`/username/${UserName}`} className="header__profile">
-                    {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
-                    <i className="fas fa-user user__profile" />{' '}
-                  </Link>
-                  <div className="filter" />
-                  <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
-                    <span className="ribbit__text">리빗</span>
-                  </div>
-                </React.Fragment>
-              ) : null}
+              {/* {Whether ? (
+                <React.Fragment> */}
+              <div onClick={this.HandleUserDropdown} className="header__profile">
+                {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
+                <i className="fas fa-user user__profile" />{' '}
+              </div>
+              <div className="user__dropDown" id="user__dropDown">
+                <Link to={`/username/${UserName}`} className="userDropDown__Content">
+                  <span>프로필</span>
+                </Link>
+                <div className="userDropDown__Content">
+                  <span>검색</span>
+                </div>
+              </div>
+              <div className="filter" />
+              <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
+                <span className="ribbit__text">리빗</span>
+              </div>
+              {/* </React.Fragment>
+              ) : null} */}
             </div>
           </div>
         </div>
