@@ -29,7 +29,7 @@ class App extends Component {
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
-              <Route path="/" component={() => <Main Whether={localStorage.Whether} />} exact />
+              <Route path="/" component={() => <Main Whether={localStorage.whether} />} exact />
               {/* 메인 페이지 */}
 
               <Route path="/:user" component={User} exact />
