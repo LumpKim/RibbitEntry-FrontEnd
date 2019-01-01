@@ -14,8 +14,12 @@ class Login extends Component {
   }
 
   HandleInput = (e) => {
+    const { Id, PassWord } = this.state;
     this.setState({
       [e.target.name]: e.target.value,
+      UserException: !!(
+        /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id) && /^[a-z0-9_-]+/.test(PassWord)
+      ),
     });
   };
 
