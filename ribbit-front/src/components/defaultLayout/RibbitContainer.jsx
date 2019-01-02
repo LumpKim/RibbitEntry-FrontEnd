@@ -8,6 +8,10 @@ class RibbitContainer extends Component {
     super(props);
     this.state = {
       count: 1,
+      ribbitImageEncoding1: '',
+      ribbitImageEncoding2: '',
+      ribbitImageEncoding3: '',
+      ribbitImageEncoding4: '',
       ribbitImage1: '',
       ribbitImage2: '',
       ribbitImage3: '',
@@ -19,10 +23,10 @@ class RibbitContainer extends Component {
     // ribbitImage가 DeleteRibbit함수에서 작동하도록 하는 함수
     this.DeleteRibbitImage = (Delete) => {
       this.setState({
-        ribbitImage1: '',
-        ribbitImage2: '',
-        ribbitImage3: '',
-        ribbitImage4: '',
+        ribbitImageEncoding1: '',
+        ribbitImageEncoding2: '',
+        ribbitImageEncoding3: '',
+        ribbitImageEncoding4: '',
         count: 1,
       });
       Delete();
@@ -40,31 +44,18 @@ class RibbitContainer extends Component {
   // 리빗할때 이미지파일을 state에 저장함.
   handleFileRibbit = async (e) => {
     const { count } = this.state;
-
+    const formData = new FormData();
     const fileList = e.target.files;
     let file = fileList[0];
-
     const data = await this.encodeBase64ImageFile(file);
 
-    if (count === 1) {
+    formData.append('fileImage', file);
+
+    if (count <= 4) {
       this.setState({
         count: count + 1,
-        ribbitImage1: data,
-      });
-    } else if (count === 2) {
-      this.setState({
-        count: count + 1,
-        ribbitImage2: data,
-      });
-    } else if (count === 3) {
-      this.setState({
-        count: count + 1,
-        ribbitImage3: data,
-      });
-    } else if (count === 4) {
-      this.setState({
-        count: count + 1,
-        ribbitImage4: data,
+        [`ribbitImageEncoding${count}`]: data,
+        [`ribbitImage${count}`]: formData.get('fileImage'),
       });
     } else {
       alert('이미지 한도를 초과하였습니다.');
@@ -92,7 +83,7 @@ class RibbitContainer extends Component {
       } else {
         this.setState({
           count: count - 1,
-          ribbitImage1: '',
+          ribbitImageEncoding1: '',
         });
       }
     } else if (number === 2) {
@@ -101,7 +92,7 @@ class RibbitContainer extends Component {
       } else {
         this.setState({
           count: count - 1,
-          ribbitImage2: '',
+          ribbitImageEncoding2: '',
         });
       }
     } else if (number === 3) {
@@ -110,13 +101,13 @@ class RibbitContainer extends Component {
       } else {
         this.setState({
           count: count - 1,
-          ribbitImage3: '',
+          ribbitImageEncoding3: '',
         });
       }
     } else if (number === 4) {
       this.setState({
         count: count - 1,
-        ribbitImage4: '',
+        ribbitImageEncoding4: '',
       });
     } else {
       alert('삭제할 이미지가 존재하지 않습니다.');
@@ -125,10 +116,17 @@ class RibbitContainer extends Component {
 
   render() {
     const {
-      Change, ribbitData, data, ribbitCancle, KeepChange, Delete,
+      Change, ribbitData, data, ribbitCancle, KeepChange, Delete, Post,
     } = this.props;
     const {
-      ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4,
+      ribbitImageEncoding1,
+      ribbitImageEncoding2,
+      ribbitImageEncoding3,
+      ribbitImageEncoding4,
+      ribbitImage1,
+      ribbitImage2,
+      ribbitImage3,
+      ribbitImage4,
     } = this.state;
     return (
       <div onClick={event => this.MaintainContent(event)} className="Ribbit__Modal">
@@ -141,7 +139,13 @@ class RibbitContainer extends Component {
           <div className="RibbitHeader__Content">
             <span className="HeaderContent__Title">새로운 리빗 작성</span>
             <i
-              onClick={() => Change(ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4)}
+              onClick={() => Change(
+                ribbitImageEncoding1,
+                ribbitImageEncoding2,
+                ribbitImageEncoding3,
+                ribbitImageEncoding4,
+              )
+              }
               className="fas fa-times HeaderContent__Close"
             />
           </div>
@@ -172,16 +176,17 @@ class RibbitContainer extends Component {
                 onChange={e => this.handleFileRibbit(e)}
                 ref="Ribbit__AddImage"
                 id="Ribbit__AddImage"
+                multiple
               />
             </label>
             <ImageContent
-              ribbitImage1={ribbitImage1}
-              ribbitImage2={ribbitImage2}
-              ribbitImage3={ribbitImage3}
-              ribbitImage4={ribbitImage4}
+              ribbitImage1={ribbitImageEncoding1}
+              ribbitImage2={ribbitImageEncoding2}
+              ribbitImage3={ribbitImageEncoding3}
+              ribbitImage4={ribbitImageEncoding4}
               Delete={this.DeleteImage}
             />
-            <div className="BodyMenu__Ribbit">
+            <div onClick={() => Post(ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4)} className="BodyMenu__Ribbit">
               <span className="BodyMenu__Ribbit__Text">리빗하기</span>
             </div>
           </div>
