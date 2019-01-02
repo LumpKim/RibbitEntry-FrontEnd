@@ -12,6 +12,7 @@
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "no-shadow": 0,
     "eslint no-alert": 0,
+    "quote-props": 0,
     "no-alert": 0,
     "eslint/no-alert": 0,
     "no-useless-escape": 0,
