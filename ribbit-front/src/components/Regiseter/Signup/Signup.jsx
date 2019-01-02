@@ -17,7 +17,7 @@ class Signup extends Component {
   HandleInput = (e) => {
     const { Id, PassWord, NickName } = this.state;
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
       UserException: !!(
         /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id)
         && /^[a-z0-9_-]+/.test(PassWord)
@@ -59,7 +59,9 @@ class Signup extends Component {
   };
 
   render() {
-    const { UserException } = this.state;
+    const {
+      UserException, Id, PassWord, NickName,
+    } = this.state;
     return (
       <div className="SignUp__Container">
         <div className="SignUpContainer__Content">
@@ -73,6 +75,7 @@ class Signup extends Component {
                 <input
                   autoComplete="off"
                   name="Id"
+                  value={Id}
                   className="SignUpForm__Input"
                   id="SignUpForm__Email"
                   type="email"
@@ -85,6 +88,7 @@ class Signup extends Component {
                 <input
                   autoComplete="off"
                   name="PassWord"
+                  value={PassWord}
                   className="SignUpForm__Input"
                   id="SignUpForm__Password"
                   type="password"
@@ -97,6 +101,7 @@ class Signup extends Component {
                 <input
                   autoComplete="off"
                   name="NickName"
+                  value={NickName}
                   className="SignUpForm__Input"
                   id="SignUpForm__NickName"
                   type="text"

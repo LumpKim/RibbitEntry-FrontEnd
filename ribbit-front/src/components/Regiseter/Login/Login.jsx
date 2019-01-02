@@ -37,7 +37,8 @@ class Login extends Component {
       })
       .then((res) => {
         alert('로그인이 완료되었습니다!');
-        HandleWhether();
+        HandleWhether(res.data.access_token, res.data.color_set);
+        window.location.reload();
       })
       .catch((res) => {
         alert('정보가 옳바르지 않습니다.');
