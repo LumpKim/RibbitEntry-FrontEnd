@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { RibbitIconTranslation, FrogAudio } from '../../assets/index';
 import RibbitContainer from './RibbitContainer';
+import Search from './Search';
 import './css/Header.css';
 
 // 스크롤 이벤트를 발생시키기 위한 변수
@@ -88,11 +90,53 @@ class Header extends Component {
   HandleUserDropdown = () => {
     const target = document.getElementById('user__dropDown');
 
-    if (target.style.display === 'none') {
-      target.style.display = 'flex';
+    if (target.className === 'user__dropDown') {
+      target.className = 'user__dropDown--On';
     } else {
-      target.style.display = 'none';
+      target.className = 'user__dropDown';
     }
+  };
+
+  PostRibbitData = (img1, img2, img3, img4) => {
+    const { ribbitData } = this.state;
+    const data = JSON.stringify({
+      content: `${ribbitData}`,
+      image: `[${img1}, ${img2}, ${img3}, ${img4}]`,
+    });
+
+    console.log(this.props.Token);
+
+    axios
+      .post('http://ribbit.jaehoon.kim:5000/api/posts', data, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.props.Token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        switch (error.response.status) {
+          case 401:
+            break;
+          case 422:
+            console.log(this.props.Token);
+            break;
+          default:
+            alert('네트워크를 확인하여 주세요.');
+        }
+      });
+
+    this.setState({
+      ribbitData: '',
+    });
+  };
+
+  LogOut = () => {
+    alert('로그아웃 되셨습니다!');
+    localStorage.setItem('token', '');
+    window.location.reload();
   };
 
   render() {
@@ -114,6 +158,7 @@ class Header extends Component {
             ribbitCancle={ribbitCancle}
             KeepChange={this.RibbitCancle}
             Delete={this.DeleteRibbit}
+            Post={this.PostRibbitData}
           />
         </div>
         <div className="topbar">
@@ -128,26 +173,34 @@ class Header extends Component {
             </div>
             <div className="filter" />
             <div className="features">
-              {/* {Whether ? (
-                <React.Fragment> */}
-              <div onClick={this.HandleUserDropdown} className="header__profile">
-                {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
-                <i className="fas fa-user user__profile" />{' '}
-              </div>
-              <div className="user__dropDown" id="user__dropDown">
-                <Link to={`/username/${UserName}`} className="userDropDown__Content">
-                  <span>프로필</span>
-                </Link>
-                <div className="userDropDown__Content">
-                  <span>검색</span>
-                </div>
-              </div>
-              <div className="filter" />
-              <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
-                <span className="ribbit__text">리빗</span>
-              </div>
-              {/* </React.Fragment>
-              ) : null} */}
+              {Whether ? (
+                <React.Fragment>
+                  <div onClick={this.HandleUserDropdown} className="header__profile">
+                    {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
+                    <i className="fas fa-user user__profile" />{' '}
+                  </div>
+                  <div
+                    className="user__dropDown"
+                    id="user__dropDown"
+                    onClick={this.HandleUserDropdown}
+                  >
+                    <Link to={`/username/${UserName}`} className="userDropDown__Content">
+                      <span>프로필</span>
+                    </Link>
+                    <div className="userDropDown__Content">
+                      <span>검색</span>
+                    </div>
+                    <div onClick={() => this.LogOut()} className="userDropDown__Content">
+                      <span>로그아웃</span>
+                    </div>
+                  </div>
+                  <Search />
+                  <div className="filter" />
+                  <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
+                    <span className="ribbit__text">리빗</span>
+                  </div>
+                </React.Fragment>
+              ) : null}
             </div>
           </div>
         </div>

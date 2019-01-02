@@ -84,8 +84,12 @@
 }
 
 .features .user__dropDown {
-  position: absolute;
   display: none;
+}
+
+.features .user__dropDown--On {
+  position: absolute;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -93,13 +97,14 @@
   font-size: 22px;
   background: #fff;
   width: 100px;
-  height: 112px;
+  height: 142px;
   margin-left: -50px;
   margin-top: 52px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
-.user__dropDown .userDropDown__Content {
+.user__dropDown,
+.features .user__dropDown--On .userDropDown__Content {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -108,7 +113,8 @@
   height: 40px;
 }
 
-.user__dropDown .userDropDown__Content:hover {
+.user__dropDown,
+.features .user__dropDown--On .userDropDown__Content:hover {
   background: #cae4cc;
 }
 
