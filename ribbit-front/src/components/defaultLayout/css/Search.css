@@ -1,0 +1,7 @@
+.Header__Search {
+  display: none;
+}
+
+.Header__Search--On {
+  display: flex;
+}
