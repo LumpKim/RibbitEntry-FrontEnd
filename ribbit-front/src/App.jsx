@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import Header from './components/defaultLayout/Header';
 import {
   Main, User, MainMyPage, Following, Followers, Login, Signup,
@@ -9,27 +10,30 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      color: '',
+    };
   }
 
-  componentDidMount() {
-    localStorage.setItem('whether', false);
-  }
-
-  HandleWhether = () => {
-    localStorage.setItem('whether', true);
+  HandleWhether = (token, color) => {
+    this.setState({
+      color,
+    });
+    localStorage.setItem('token', token);
   };
 
   render() {
+    const { color } = this.state;
+    const Token = localStorage.getItem('token');
     return (
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Header Whether={localStorage.Whether} />
+            <Header Whether={!!(Token !== '')} Token={Token} />
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
-              <Route path="/" component={() => <Main Whether={localStorage.whether} />} exact />
+              <Route path="/" component={() => <Main Whether={!!(Token !== '')} />} exact />
               {/* 메인 페이지 */}
 
               <Route path="/:user" component={User} exact />
