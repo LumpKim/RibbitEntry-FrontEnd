@@ -41,7 +41,7 @@ class Login extends Component {
         window.location.reload();
       })
       .catch((res) => {
-        alert('정보가 옳바르지 않습니다.');
+        alert('정보가 올바르지 않습니다.');
       });
   };
 
