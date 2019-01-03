@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Link, withRouter } from 'react-router-dom';
 import { SearchIcon } from '../../assets/index';
 import './css/Search.css';
 
@@ -16,24 +18,65 @@ class Search extends Component {
     });
   };
 
+  SearchContent = () => {
+    const { searchText } = this.state;
+    const data = JSON.stringify({
+      search_word: `${searchText}`,
+    });
+
+    axios
+      .post('http://ribbit.jaehoon.kim:5000/api/search', data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        alert(`${searchText}는 ${error.response.data.status}`);
+      });
+  };
+
+  EnterKeyDown = (e) => {
+    const { history } = this.props;
+
+    if (e.key === 'Enter') {
+      history.push(`/search/?word=${this.state.searchText}`);
+      this.setState({
+        searchText: '',
+      });
+    }
+  };
+
   render() {
     const { searchText } = this.state;
     return (
-      <div className="Header__Search">
+      <div className="Header__Search" id="Header__Search">
         <div className="Search__Container">
           <input
+            autoComplete="off"
             className="SearchContainer__Input"
             name="searchText"
             type="text"
             value={searchText}
             onChange={e => this.HandleInput(e)}
+            onKeyPress={e => this.EnterKeyDown(e)}
             placeholder="리빗 검색하기"
           />
-          <img src={SearchIcon} alt="돋보기" />
+          <Link
+            to={`/search/?word=${searchText}`}
+            onClick={searchText ? null : e => e.preventDefault()}
+          >
+            <img
+              className="SearchContainer__Icon"
+              src={SearchIcon}
+              alt="돋보기"
+              onClick={() => this.SearchContent()}
+            />
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-export default Search;
+export default withRouter(Search);
