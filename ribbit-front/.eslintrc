@@ -10,6 +10,7 @@
     "react/jsx-one-expression-per-line": 0,
     "no-param-reassign": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "import/no-extraneous-dependencies": 0,
     "no-shadow": 0,
     "eslint no-alert": 0,
     "quote-props": 0,
