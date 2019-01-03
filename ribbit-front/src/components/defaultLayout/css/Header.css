@@ -7,6 +7,7 @@
   position: fixed;
   justify-content: center;
   z-index: 3000;
+  border-bottom: 2px solid gray;
 }
 
 .topbar-content {
@@ -71,16 +72,27 @@
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: #a5d6a7; /* import로 색깔 불러오고 대체 */
+  background-color: #a5d6a7;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.2s;
   cursor: pointer;
+  opacity: 0.7;
 }
 
-.features .header__ribbit:hover {
-  background-color: #84d687; /* import로 색깔 불러오고 대체 - 더 진한색. xd참고 */
+.features .header__ribbit-hover {
+  background-color: #84d687;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
 }
 
 .features .user__dropDown {
