@@ -5,6 +5,7 @@ import Following from './MyPage/Following/Following';
 import Followers from './MyPage/Followers/Followers';
 import Login from './Regiseter/Login/Login';
 import Signup from './Regiseter/Signup/Signup';
+import Search from './Search/Search';
 
 export {
   // 메인페이지
@@ -21,4 +22,6 @@ export {
   Login,
   // 회원가입
   Signup,
+  // 검색
+  Search,
 };
