@@ -4,26 +4,28 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/defaultLayout/Header';
 import {
-  Main, User, MainMyPage, Following, Followers, Login, Signup,
+  Main,
+  User,
+  MainMyPage,
+  Following,
+  Followers,
+  Login,
+  Signup,
+  Search,
 } from './container/index';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      color: '',
-    };
+    this.state = {};
   }
 
   HandleWhether = (token, color) => {
-    this.setState({
-      color,
-    });
+    localStorage.setItem('color', color);
     localStorage.setItem('token', token);
   };
 
   render() {
-    const { color } = this.state;
     const Token = localStorage.getItem('token');
     return (
       <div className="App">
@@ -36,17 +38,20 @@ class App extends Component {
               <Route path="/" component={() => <Main Whether={!!(Token !== '')} />} exact />
               {/* 메인 페이지 */}
 
+              <Route path="/search/" component={Search} exact />
+              {/* 검색 페이지 */}
+
               <Route path="/:user" component={User} exact />
               {/* 유저 정보 페이지 */}
-
-              <Route path="/username/:user" component={MainMyPage} exact />
-              {/* 마이페이지 */}
 
               <Route path="/username/:user/following" component={Following} exact />
               {/* 마이페이지 팔로잉 */}
 
               <Route path="/username/:user/followers" component={Followers} exact />
               {/* 마이페이지 팔로워 */}
+
+              <Route path="/username/:user" component={MainMyPage} exact />
+              {/* 마이페이지 */}
 
               <Route
                 path="/user/login"
