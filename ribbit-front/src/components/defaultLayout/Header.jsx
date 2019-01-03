@@ -18,8 +18,21 @@ class Header extends Component {
       ribbitCancle: false,
       ribbitData: '',
       UserName: '',
+      hover: false,
     };
   }
+
+  hoverOn = () => {
+    this.setState({
+      hover: true,
+    });
+  };
+
+  hoverOff = () => {
+    this.setState({
+      hover: false,
+    });
+  };
 
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
   // 스크롤이 0이 되면 setInterval 함수 실행을 중단.
@@ -97,6 +110,16 @@ class Header extends Component {
     }
   };
 
+  HandleSearch = () => {
+    const target = document.getElementById('Header__Search');
+
+    if (target.className === 'Header__Search') {
+      target.className = 'Header__Search--On';
+    } else {
+      target.className = 'Header__Search';
+    }
+  };
+
   PostRibbitData = (img1, img2, img3, img4) => {
     const { ribbitData } = this.state;
     const data = JSON.stringify({
@@ -162,8 +185,13 @@ class Header extends Component {
           />
         </div>
         <div className="topbar">
+          {/* style={{ backgroundColor: localStorage.getItem('color') }} */}
           <div className="topbar-content">
-            <Link to="/" className="navigation">
+            <Link
+              style={{ color: localStorage.color, borderBottom: `4px solid ${localStorage.color}` }}
+              to="/"
+              className="navigation"
+            >
               <i className="fas fa-home" />
               <span>홈</span>
             </Link>
@@ -177,7 +205,10 @@ class Header extends Component {
                 <React.Fragment>
                   <div onClick={this.HandleUserDropdown} className="header__profile">
                     {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
-                    <i className="fas fa-user user__profile" />{' '}
+                    <i
+                      style={{ color: localStorage.color, opacity: 0.6 }}
+                      className="fas fa-user user__profile"
+                    />{' '}
                   </div>
                   <div
                     className="user__dropDown"
@@ -187,7 +218,7 @@ class Header extends Component {
                     <Link to={`/username/${UserName}`} className="userDropDown__Content">
                       <span>프로필</span>
                     </Link>
-                    <div className="userDropDown__Content">
+                    <div onClick={() => this.HandleSearch()} className="userDropDown__Content">
                       <span>검색</span>
                     </div>
                     <div onClick={() => this.LogOut()} className="userDropDown__Content">
@@ -196,7 +227,13 @@ class Header extends Component {
                   </div>
                   <Search />
                   <div className="filter" />
-                  <div onClick={this.ChangeRibbitToggle} className="header__ribbit">
+                  <div
+                    style={{ backgroundColor: localStorage.color }}
+                    onClick={this.ChangeRibbitToggle}
+                    onMouseEnter={this.hoverOn}
+                    onMouseLeave={this.hoverOff}
+                    className={this.state.hover ? 'header__ribbit-hover' : 'header__ribbit'}
+                  >
                     <span className="ribbit__text">리빗</span>
                   </div>
                 </React.Fragment>
