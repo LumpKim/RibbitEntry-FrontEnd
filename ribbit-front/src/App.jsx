@@ -17,12 +17,20 @@ import {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      SearchData: [],
+    };
   }
 
   HandleWhether = (token, color) => {
     localStorage.setItem('color', color);
     localStorage.setItem('token', token);
+  };
+
+  SearchData = (data) => {
+    this.setState({
+      SearchData: data,
+    });
   };
 
   render() {
@@ -31,14 +39,23 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
-            <Header Whether={!!(Token !== '')} Token={Token} />
+            <Header
+              Whether={!!(Token !== '')}
+              Token={Token}
+              GetSearchData={this.SearchData}
+              TrueSearch={this.TrueSearch}
+            />
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
               <Route path="/" component={() => <Main Whether={!!(Token !== '')} />} exact />
               {/* 메인 페이지 */}
 
-              <Route path="/search/" component={Search} exact />
+              <Route
+                path="/search"
+                component={() => <Search SearchData={this.state.SearchData} />}
+                exact
+              />
               {/* 검색 페이지 */}
 
               <Route path="/:user" component={User} exact />
