@@ -29,11 +29,16 @@ class Search extends Component {
         headers: { 'Content-Type': 'application/json' },
       })
       .then((res) => {
-        console.log(res.data);
+        const UserData = JSON.stringify(res.data);
+        this.props.GetSearchData(UserData);
       })
       .catch((error) => {
-        alert(`${searchText}는 ${error.response.data.status}`);
+        console.log(`${searchText}는 ${error.response.data.status}`);
+        this.props.GetSearchData(error.response.data.status);
       });
+    this.setState({
+      searchText: '',
+    });
   };
 
   EnterKeyDown = (e) => {
@@ -41,9 +46,7 @@ class Search extends Component {
 
     if (e.key === 'Enter') {
       history.push(`/search/?word=${this.state.searchText}`);
-      this.setState({
-        searchText: '',
-      });
+      this.SearchContent();
     }
   };
 
