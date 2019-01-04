@@ -159,14 +159,14 @@ class Header extends Component {
   LogOut = () => {
     alert('로그아웃 되셨습니다!');
     localStorage.setItem('token', '');
-    window.location.reload();
+    window.location.href = '/';
   };
 
   render() {
     const {
       ribbitTurn, ribbitData, ribbitCancle, UserName,
     } = this.state;
-    const { Whether } = this.props;
+    const { Whether, GetSearchData } = this.props;
     return (
       <React.Fragment>
         <div
@@ -225,7 +225,7 @@ class Header extends Component {
                       <span>로그아웃</span>
                     </div>
                   </div>
-                  <Search />
+                  <Search GetSearchData={GetSearchData} TrueSearch={this.props.TrueSearch} />
                   <div className="filter" />
                   <div
                     style={{ backgroundColor: localStorage.color }}
