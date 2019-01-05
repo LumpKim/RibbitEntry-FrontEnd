@@ -29,12 +29,12 @@ class Search extends Component {
         headers: { 'Content-Type': 'application/json' },
       })
       .then((res) => {
-        const UserData = JSON.stringify(res.data);
-        this.props.GetSearchData(UserData);
+        const UserData = res.data;
+        this.props.GetSearchData(UserData, UserData[0].nickname);
       })
       .catch((error) => {
         console.log(`${searchText}는 ${error.response.data.status}`);
-        this.props.GetSearchData(error.response.data.status);
+        this.props.GetSearchData(false);
       });
     this.setState({
       searchText: '',
