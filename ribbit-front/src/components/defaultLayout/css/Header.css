@@ -53,9 +53,10 @@
   position: relative;
 }
 
-.features .header__profile {
+.header__profile {
   width: 50px;
   height: 50px;
+  font-size: 50px;
   border-radius: 50%;
   background-color: #dee2e6;
   overflow: hidden;
@@ -65,7 +66,7 @@
   cursor: pointer;
 }
 .header__profile .user__profile {
-  color: #a5d6a7; /* import로 색깔 불러오고 대체 */
+  color: #a5d6a7;
 }
 
 .features .header__ribbit {
