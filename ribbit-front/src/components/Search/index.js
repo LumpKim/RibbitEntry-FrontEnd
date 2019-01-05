@@ -1,5 +1,5 @@
-import FoundUsers from './FoundUsers';
-import NotFoundUsers from './NotFoundUsers';
 import SearchComponent from './SearchComponent';
+import SearchDataView from './SearchDataView';
+import NotSearchDataView from './NotSearchDataView';
 
-export { FoundUsers, NotFoundUsers, SearchComponent };
+export { SearchComponent, SearchDataView, NotSearchDataView };
