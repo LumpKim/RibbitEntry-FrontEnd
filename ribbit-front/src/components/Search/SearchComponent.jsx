@@ -18,7 +18,7 @@ class SearchComponent extends Component {
         <div className="SearchNavigation">
           <div className="SearchNavigation__UserName">
             <h1 className="SearchNavigationUserName__Title">
-              {UserName ? `${UserName}` : '유저 정보가 없습니다.'}
+              {UserData ? `${UserName}` : '유저 정보가 없습니다.'}
             </h1>
           </div>
           <div className="SearchNavigation__TextData">
@@ -30,7 +30,7 @@ class SearchComponent extends Component {
             {UserData ? (
               UserData.map((item, index) => <SearchDataView UserData={item} index={index} />)
             ) : (
-              <NotSearchDataView />
+              <NotSearchDataView UserName={UserName} />
             )}
           </div>
         </div>
