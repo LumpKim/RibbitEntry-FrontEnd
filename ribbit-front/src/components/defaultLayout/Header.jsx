@@ -38,19 +38,17 @@ class Header extends Component {
   // 스크롤이 0이 되면 setInterval 함수 실행을 중단.
   scrollStep = () => {
     if (window.pageYOffset === 0) {
-      clearInterval(intervalld);
-      setTimeout(() => {
-        window.location.reload();
-      }, 320);
+      this.props.GetUserData();
+      clearInterval(this.intervalld);
     }
 
     window.scroll(0, window.pageYOffset - 50);
   };
 
-  // 비동기를 통한 window객체 조종
+  // 비동기처리 를 통한 window객체 조종
   scrollToTop = async () => {
     FlogAudioSound.play();
-    const intervalld = await setInterval(this.scrollStep, 3.4);
+    this.intervalld = await setInterval(this.scrollStep, 3.4);
   };
 
   // 리빗을 클릭시 배경이 나오게 하는 함수.
@@ -87,6 +85,7 @@ class Header extends Component {
     this.setState({
       ribbitData: e.target.value,
     });
+    this.props.formData.set('content', this.state.ribbitData);
   };
 
   // 리빗 취소를 결정하는 함수
@@ -120,35 +119,28 @@ class Header extends Component {
     }
   };
 
-  PostRibbitData = (img1, img2, img3, img4) => {
-    const { ribbitData } = this.state;
-    const data = JSON.stringify({
-      content: `${ribbitData}`,
-      image: `[${img1}, ${img2}, ${img3}, ${img4}]`,
-    });
-
-    console.log(this.props.Token);
-
+  PostRibbitData = () => {
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/posts', data, {
+      .post('http://ribbit.jaehoon.kim:5000/api/posts', this.props.formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${this.props.Token}`,
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((error) => {
-        switch (error.response.status) {
-          case 401:
-            break;
-          case 422:
-            console.log(this.props.Token);
-            break;
-          default:
-            alert('네트워크를 확인하여 주세요.');
-        }
+        console.log(error);
+        // switch (error.response.status) {
+        //   case 401:
+        //     break;
+        //   case 422:
+        //     // console.log(this.props.Token);
+        //     break;
+        //   default:
+        //     alert('네트워크를 확인하여 주세요.');
+        // }
       });
 
     this.setState({
@@ -182,6 +174,7 @@ class Header extends Component {
             KeepChange={this.RibbitCancle}
             Delete={this.DeleteRibbit}
             Post={this.PostRibbitData}
+            formData={this.props.formData}
           />
         </div>
         <div className="topbar">
@@ -196,7 +189,7 @@ class Header extends Component {
               <span>홈</span>
             </Link>
             <div className="filter" />
-            <div onClick={this.scrollToTop} className="mainLogo">
+            <div onClick={() => this.scrollToTop()} className="mainLogo">
               <img className="Logo" src={RibbitIconTranslation} alt="투명한배경의 로고" />
             </div>
             <div className="filter" />

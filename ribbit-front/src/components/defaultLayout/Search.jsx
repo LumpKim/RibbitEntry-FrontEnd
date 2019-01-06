@@ -33,8 +33,7 @@ class Search extends Component {
         this.props.GetSearchData(UserData, UserData[0].nickname);
       })
       .catch((error) => {
-        console.log(`${searchText}는 ${error.response.data.status}`);
-        this.props.GetSearchData(false);
+        this.props.GetSearchData(false, searchText);
       });
     this.setState({
       searchText: '',
