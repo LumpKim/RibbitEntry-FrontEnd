@@ -29,7 +29,6 @@ class ColorSelector extends Component {
     this.setState({
       SelectColor: item,
     });
-    console.log(item);
 
     if (item === colors[8]) {
       InsertUserColor.style.display = 'inline';
