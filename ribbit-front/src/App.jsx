@@ -14,6 +14,8 @@ import {
   Search,
 } from './container/index';
 
+const formData = new FormData();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -82,6 +84,25 @@ class App extends Component {
     this.RandomWrite();
   };
 
+  GetUserData = () => {
+    const { SearchName } = this.state;
+
+    axios
+      .get('http://ribbit.jaehoon.kim:5000/api/main-page', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        const UserData = res.data;
+        console.log(UserData);
+      })
+      .catch((error) => {
+        alert('서버에서 데이터를 불러오지 못 하였습니다.');
+      });
+  };
+
   render() {
     const Token = localStorage.getItem('token');
 
@@ -95,11 +116,17 @@ class App extends Component {
               Token={Token}
               GetSearchData={this.SearchData}
               TrueSearch={this.TrueSearch}
+              GetUserData={this.GetUserData}
+              formData={formData}
             />
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
             <Switch>
-              <Route path="/" component={() => <Main Whether={!!(Token !== '')} />} exact />
+              <Route
+                path="/"
+                component={() => <Main Whether={!!(Token !== '')} GetUserData={this.GetUserData} />}
+                exact
+              />
               {/* 메인 페이지 */}
 
               <Route
