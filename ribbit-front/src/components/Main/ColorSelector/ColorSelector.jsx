@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './css/ColorSelector.css';
 
 class ColorSelector extends Component {
@@ -23,7 +24,7 @@ class ColorSelector extends Component {
   // 클릭시 색 변경
   ToggleActiveColor = (item) => {
     const InsertUserColor = document.getElementById('HeaderColors__InsertUserColor');
-    const { colors } = this.state;
+    const { colors, SelectColor } = this.state;
 
     this.setState({
       SelectColor: item,
@@ -35,6 +36,60 @@ class ColorSelector extends Component {
     } else {
       InsertUserColor.style.display = 'none';
     }
+
+    const data = JSON.stringify({
+      color: `${item}`,
+    });
+
+    axios
+      .post('http://ribbit.jaehoon.kim:5000/api/color', data, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        switch (res.data.color) {
+          case '#d68484':
+            alert('붉은색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#d6b984':
+            alert('주황색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#cdd684':
+            alert('노란색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#84d687':
+            alert('초록색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#84d6ce':
+            alert('하늘색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#84a1d6':
+            alert('청색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#a484d6':
+            alert('보라색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          case '#d684cc':
+            alert('핑크색으로 설정 되었습니다.');
+            localStorage.setItem('color', res.data.color);
+            break;
+          default:
+            alert(`${res.data.color}색으로 설정 되었습니다.`);
+            localStorage.setItem('color', res.data.color);
+        }
+      })
+      .catch((error) => {
+        alert(`${error.response.data.status}\n색상을 입력 후 다시 한번 클릭해주세요.`);
+      });
   };
 
   // 유저 색깔 state에 넣음

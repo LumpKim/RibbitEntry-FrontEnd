@@ -15,21 +15,21 @@ const MainProfile = () => (
     <div className="info-tab">
       <div className="gap-by-info" />
       <div className="info-elements">
-        <Link to={`/user/${userAddress}`}>
+        <Link to={`/username/${userAddress}`}>
           <span className="info-name">Ribbits</span>
           <br />
           <span className="info-content">{userRibbitData}</span>
         </Link>
       </div>
       <div className="info-elements">
-        <Link to={`/user/${userAddress}/following`}>
+        <Link to={`/username/${userAddress}/following`}>
           <span className="info-name">following</span>
           <br />
           <span className="info-content">{userFollowingData}</span>
         </Link>
       </div>
       <div className="info-elements">
-        <Link to={`/user/${userAddress}/followers`}>
+        <Link to={`/username/${userAddress}/followers`}>
           <span className="info-name">followers</span>
           <br />
           <span className="info-content">{userFollowersData}</span>

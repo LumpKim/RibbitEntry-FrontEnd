@@ -2,63 +2,10 @@ import React, { Component } from 'react';
 import './css/Posts.css';
 import MainRibbit from './MainRibbit';
 
-class Posts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div className="MainContent__Posts">
-        <MainRibbit />
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-        <p>f</p>
-      </div>
-    );
-  }
-}
+const Posts = () => (
+  <div className="MainContent__Posts">
+    <MainRibbit />
+  </div>
+);
 
 export default Posts;

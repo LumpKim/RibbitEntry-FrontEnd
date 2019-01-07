@@ -1,0 +1,30 @@
+.SearchBodyContentNotUserDataForm__Item {
+  width: 700px;
+  height: 200px;
+  margin-left: 350px;
+}
+
+.SearchBodyContentNotUserDataForm__Item
+  .SearchBodyContentNotUserDataFormItem__Header {
+  width: 700px;
+  height: 50px;
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+
+.SearchBodyContentNotUserDataFormItem__Header
+  .SearchBodyContentNotUserDataFormItemHeader__Title {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.SearchBodyContentNotUserDataForm__Item
+  .SearchBodyContentNotUserDataFormItem__Body {
+  width: 700px;
+  height: 150px;
+}
+
+.SearchBodyContentNotUserDataFormItem__Body
+  .SearchBodyContentNotUserDataFormItemBody__Contents {
+  font-size: 23px;
+}

@@ -1,37 +1,173 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 import Header from './components/defaultLayout/Header';
 import {
-  Main, User, MainMyPage, Following, Followers,
+  Main,
+  User,
+  MainMyPage,
+  Following,
+  Followers,
+  Login,
+  Signup,
+  Search,
 } from './container/index';
 
-const App = () => (
-  <div className="App">
-    <BrowserRouter>
-      <React.Fragment>
-        <Header />
-        {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
-        <div className="header__background" />
-        <Switch>
-          <Route path="/" component={Main} exact />
-          {/* 메인 페이지 */}
+const formData = new FormData();
 
-          <Route path="/:user" component={User} exact />
-          {/* 유저 정보 페이지 */}
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      SearchData: [],
+      SearchName: '',
+      RandomWriting: '',
+    };
+  }
 
-          <Route path="/user/:user" component={MainMyPage} exact />
-          {/* 마이페이지 */}
+  RandomWrite = () => {
+    const Writing = [
+      '사람은 생각하는 갈대다. -파스칼-',
+      '인간은 만물의 척도이다. -포로타고라스-',
+      '사람은 열 살까지는 천재다. -헉슬리-',
+      '산다는 것은 치열한 전투다. -로망 로랑-',
+      '눈물은 슬픔의 무성의 말. -올렌드-',
+      '슬픔은 오해당한 기쁨.  -브라우닝-',
+      '인생은 완전한 것이다. -괴테-',
+      '희열은 노동 후의 휴식. -칸트-',
+      '노동은 생명, 사상. 광명이다. -위고-',
+      '사랑이 있는 곳에 신이 있다. -스토우 부인-',
+      '연애에는 안정주가 없다. -안드레 브레보-',
+      '사랑은 삶의 대부분이다. -바이런-',
+      '우정은 날개 없는 사랑. -바이런-',
+      '친구란 또 하나의 자신이다. -이리스토텔레스-',
+      '무관심은 태만이다. -헉슬리-',
+      '지혜는 경험의 딸이다. -레오나르드다빈치-',
+      '아는 것은 힘이다. -베이컨-',
+      '미는 진을 판단한다. -아랑-',
+      '어린이는 어른의 어버이다. -워즈워드-',
+      '정복하기 위해 굴복한다. -윌리엄 쿠퍼-',
+      '책이 책을 낳는다. -볼테르-',
+      '희망은 가난한 자의 빵. -탈레스-',
+      '말로 슬픔을 덜 수 없다. -고르키-',
+      '시기 없는 행복은 없다. -발데크-',
+      '행복의 층계는 미끄럽다. -로마 격언-',
+      '생각은 계량하는 것이다. -나뇨오-',
+      '악이란 약함이다. -밀턴-',
+      '정직은 최선의 책략이다. -영국 속담-',
+      '가정은 도덕상의 학교다. -페스탈로치-',
+      '질서는 사회의 힘이다. -아미엘-',
+      '투표는 총알보다 강하다. -링컨-',
+      '정의는 사회의 지주이다. -스미드-',
+      '일은 친구를 만든다. -괴테-',
+      '정치와 같은 도박은 없다. -디즈렐리-',
+      '무질서는 붕괴이며 죽음이다. -카알 라일-',
+      '사랑은 봉사를 뜻한다. -스미드-',
+    ];
 
-          <Route path="/user/:user/following" component={Following} exact />
-          {/* 마이페이지 팔로잉 */}
+    this.setState({
+      RandomWriting: Writing[Math.round(Math.random() * 33)],
+    });
+  };
 
-          <Route path="/user/:user/followers" component={Followers} exact />
-          {/* 마이페이지 팔로워 */}
-        </Switch>
-      </React.Fragment>
-    </BrowserRouter>
-  </div>
-);
+  HandleWhether = (token, color) => {
+    localStorage.setItem('color', color);
+    localStorage.setItem('token', token);
+  };
 
+  SearchData = (data, name) => {
+    this.setState({
+      SearchData: data,
+      SearchName: name,
+    });
+    this.RandomWrite();
+  };
+
+  GetUserData = () => {
+    const { SearchName } = this.state;
+
+    axios
+      .get('http://ribbit.jaehoon.kim:5000/api/main-page', {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        const UserData = res.data;
+        console.log(UserData);
+      })
+      .catch((error) => {
+        alert('서버에서 데이터를 불러오지 못 하였습니다.');
+      });
+  };
+
+  render() {
+    const Token = localStorage.getItem('token');
+
+    const { SearchData, SearchName, RandomWriting } = this.state;
+    return (
+      <div className="App">
+        <BrowserRouter>
+          <React.Fragment>
+            <Header
+              Whether={!!(Token !== '')}
+              Token={Token}
+              GetSearchData={this.SearchData}
+              TrueSearch={this.TrueSearch}
+              GetUserData={this.GetUserData}
+              formData={formData}
+            />
+            {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
+            <div className="header__background" />
+            <Switch>
+              <Route
+                path="/"
+                component={() => <Main Whether={!!(Token !== '')} GetUserData={this.GetUserData} />}
+                exact
+              />
+              {/* 메인 페이지 */}
+
+              <Route
+                path="/search"
+                component={() => (
+                  <Search
+                    SearchData={SearchData}
+                    UserName={SearchName}
+                    StateRandomWriting={RandomWriting}
+                  />
+                )}
+                exact
+              />
+              {/* 검색 페이지 */}
+
+              <Route path="/:user" component={User} exact />
+              {/* 유저 정보 페이지 */}
+
+              <Route path="/username/:user/following" component={Following} exact />
+              {/* 마이페이지 팔로잉 */}
+
+              <Route path="/username/:user/followers" component={Followers} exact />
+              {/* 마이페이지 팔로워 */}
+
+              <Route path="/username/:user" component={MainMyPage} exact />
+              {/* 마이페이지 */}
+
+              <Route
+                path="/user/login"
+                component={() => <Login HandleWhether={this.HandleWhether} />}
+                exact
+              />
+              {/* 로그인 페이지 */}
+
+              <Route path="/user/signup" component={Signup} exact />
+              {/* 회원가입 페이지 */}
+            </Switch>
+          </React.Fragment>
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
 export default App;

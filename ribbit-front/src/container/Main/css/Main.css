@@ -10,4 +10,13 @@
   display: flex;
 }
 
+.Main__Register {
+  width: 800px;
+  height: 887px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6ecf0;
+}
+
 /* #e6ecf0 <- 트위터에서 흰색 대체 */

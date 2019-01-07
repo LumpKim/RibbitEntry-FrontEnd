@@ -4,7 +4,14 @@ import RibbitOff from './Ribbit-off.png';
 import TalkingBalloon from './TalkingBalloon.png';
 import FrogAudio from './frog.mp3';
 import HeaderPhoto from './header-photo.png';
+import SearchIcon from './Search.png';
 
 export {
-  RibbitIconTranslation, RibbitIcon, RibbitOff, TalkingBalloon, FrogAudio, HeaderPhoto,
+  RibbitIconTranslation,
+  RibbitIcon,
+  RibbitOff,
+  TalkingBalloon,
+  FrogAudio,
+  HeaderPhoto,
+  SearchIcon,
 };

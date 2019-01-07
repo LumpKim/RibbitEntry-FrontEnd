@@ -1,0 +1,67 @@
+.SignUp__Container {
+  width: 800px;
+  height: 887px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6ecf0;
+}
+
+.SignUp__Container .SignUpContainer__Content {
+  width: 500px;
+  height: 550px;
+}
+
+.SignUp__Container .SignUp__Header {
+  width: 500px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #84d687;
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.SignUp__Container .SignUp__Body {
+  width: 500px;
+  height: 475px;
+}
+
+.SignUp__Body .SignUpBody__Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+}
+
+.SignUpBody__Form .SignUpForm__Input--Label {
+  margin: 28px 0;
+}
+
+.SignUpForm__Input--Label .SignUpForm__Input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #84d687;
+  margin-left: 12px;
+  font-size: 24px;
+}
+
+.SignUpBody__Form .SignUpForm__Submit {
+  margin-top: 35px;
+  border-radius: 50px;
+  height: 50px;
+  color: #84d687;
+  border: 1px solid #84d687;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.SignUpBody__Form .SignUpForm__Submit:hover {
+  background: #84d687;
+  color: #fff;
+}
