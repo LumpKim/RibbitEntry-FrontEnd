@@ -72,3 +72,15 @@
   width: 855px;
   margin-top: 20px;
 }
+
+.MainPosts__MainRibbit .MainMenu__Ribbit {
+  background-color: #61d665;
+  padding: 10px 24px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}

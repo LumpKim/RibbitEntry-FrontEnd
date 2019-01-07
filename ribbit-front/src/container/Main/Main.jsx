@@ -17,6 +17,24 @@ class Main extends Component {
     GetUserData();
   }
 
+  PostRibbitData = (deleteData) => {
+    axios
+      .post('http://ribbit.jaehoon.kim:5000/api/post', this.props.formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        alert('게시글 작성을 완료하였습니다!');
+        deleteData();
+        this.props.GetUserData();
+      })
+      .catch((error) => {
+        alert('에러가 발생했습니다!');
+      });
+  };
+
   render() {
     const {
       GetUserData,
@@ -28,6 +46,7 @@ class Main extends Component {
       profileImage,
       userId,
       post,
+      formData,
     } = this.props;
 
     return (
@@ -43,7 +62,14 @@ class Main extends Component {
               followerNum={followerNum}
             />
             <div className="filter" />
-            <Posts post={post} nickname={nickname} profileImage={profileImage} userId={userId} />
+            <Posts
+              post={post}
+              nickname={nickname}
+              profileImage={profileImage}
+              userId={userId}
+              formData={formData}
+              PostRibbitData={this.PostRibbitData}
+            />
             <div className="filter" />
             <ColorSelector userId={userId} GetUserData={GetUserData} />
           </div>
