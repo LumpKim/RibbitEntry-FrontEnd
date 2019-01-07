@@ -5,6 +5,7 @@ import TalkingBalloon from './TalkingBalloon.png';
 import FrogAudio from './frog.mp3';
 import HeaderPhoto from './header-photo.png';
 import SearchIcon from './Search.png';
+import Loading from './loading.gif';
 
 export {
   RibbitIconTranslation,
@@ -14,4 +15,5 @@ export {
   FrogAudio,
   HeaderPhoto,
   SearchIcon,
+  Loading,
 };
