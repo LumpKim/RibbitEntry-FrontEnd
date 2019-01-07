@@ -17,9 +17,7 @@ class Login extends Component {
     const { Id, PassWord } = this.state;
     this.setState({
       [e.target.name]: e.target.value,
-      UserException: !!(
-        /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id) && /^[a-z0-9_-]+/.test(PassWord)
-      ),
+      UserException: !!(/^[a-z0-9+\.-]+/.test(Id) && /^[a-z0-9_-]+/.test(PassWord)),
     });
   };
 
@@ -62,8 +60,8 @@ class Login extends Component {
                   name="Id"
                   className="LoginForm__Input"
                   id="LoginForm__Email"
-                  type="email"
-                  placeholder="example@gmail.com"
+                  type="text"
+                  placeholder="example"
                   onChange={e => this.HandleInput(e)}
                 />
               </label>
