@@ -119,33 +119,34 @@ class Header extends Component {
     }
   };
 
-  PostRibbitData = () => {
+  PostRibbitData = (DeleteImage) => {
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/posts', this.props.formData, {
+      .post('http://ribbit.jaehoon.kim:5000/api/post', this.props.formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${this.props.Token}`,
         },
       })
       .then((res) => {
-        // console.log(res);
+        this.setState({
+          ribbitData: '',
+        });
+        DeleteImage();
       })
       .catch((error) => {
-        console.log(error);
         // switch (error.response.status) {
         //   case 401:
         //     break;
         //   case 422:
         //     // console.log(this.props.Token);
         //     break;
+        //   case 500:
+        //     console.log('Server Error!');
+        //     break;
         //   default:
         //     alert('네트워크를 확인하여 주세요.');
         // }
       });
-
-    this.setState({
-      ribbitData: '',
-    });
   };
 
   LogOut = () => {
