@@ -20,12 +20,9 @@ class Search extends Component {
 
   SearchContent = () => {
     const { searchText } = this.state;
-    const data = JSON.stringify({
-      search_word: `${searchText}`,
-    });
 
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/search', data, {
+      .get(`http://ribbit.jaehoon.kim:5000/api/search?word=${searchText}`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .then((res) => {
