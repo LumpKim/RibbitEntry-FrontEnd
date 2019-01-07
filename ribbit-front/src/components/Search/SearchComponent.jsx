@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './css/SearchComponent.css';
 import { SearchDataView, NotSearchDataView } from './index';
 
@@ -10,6 +11,12 @@ class SearchComponent extends Component {
       NotUserData: false,
     };
   }
+
+  GoUserPage = () => {
+    const { history, userId } = this.props;
+
+    history.push(`/username/${userId}`);
+  };
 
   render() {
     const { UserData, TalkTitle, UserName } = this.props;
@@ -28,7 +35,9 @@ class SearchComponent extends Component {
         <div className="SearchBody">
           <div className="SearchBody__Content">
             {UserData ? (
-              UserData.map((item, index) => <SearchDataView UserData={item} index={index} />)
+              UserData.map((item, index) => (
+                <SearchDataView onclick={this.GoUserPage} UserData={item} index={index} />
+              ))
             ) : (
               <NotSearchDataView UserName={UserName} />
             )}
@@ -39,4 +48,4 @@ class SearchComponent extends Component {
   }
 }
 
-export default SearchComponent;
+export default withRouter(SearchComponent);

@@ -11,9 +11,16 @@ class Search extends Component {
   }
 
   render() {
-    const { SearchData, StateRandomWriting, UserName } = this.props;
+    const {
+      SearchData, StateRandomWriting, UserName, userId,
+    } = this.props;
     return (
-      <SearchComponent UserData={SearchData} UserName={UserName} TalkTitle={StateRandomWriting} />
+      <SearchComponent
+        UserData={SearchData}
+        UserName={UserName}
+        TalkTitle={StateRandomWriting}
+        userId={userId}
+      />
     );
   }
 }
