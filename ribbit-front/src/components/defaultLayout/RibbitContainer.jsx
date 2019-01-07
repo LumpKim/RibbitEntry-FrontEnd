@@ -12,10 +12,6 @@ class RibbitContainer extends Component {
       ribbitImageEncoding2: '',
       ribbitImageEncoding3: '',
       ribbitImageEncoding4: '',
-      ribbitImage1: '',
-      ribbitImage2: '',
-      ribbitImage3: '',
-      ribbitImage4: '',
     };
   }
 
@@ -44,18 +40,19 @@ class RibbitContainer extends Component {
   // 리빗할때 이미지파일을 state에 저장함.
   handleFileRibbit = async (e) => {
     const { count } = this.state;
-    const formData = new FormData();
+    const { formData } = this.props;
+
     const fileList = e.target.files;
     let file = fileList[0];
-    const data = await this.encodeBase64ImageFile(file);
 
-    formData.append('fileImage', file);
+    formData.append(`file[${count}]`, file);
+
+    const data = await this.encodeBase64ImageFile(fileList[0]);
 
     if (count <= 4) {
       this.setState({
         count: count + 1,
         [`ribbitImageEncoding${count}`]: data,
-        [`ribbitImage${count}`]: formData.get('fileImage'),
       });
     } else {
       alert('이미지 한도를 초과하였습니다.');
@@ -76,6 +73,7 @@ class RibbitContainer extends Component {
   // 이미지 파일 삭제 하는 함수
   DeleteImage = (number) => {
     const { count } = this.state;
+    const { formData } = this.props;
 
     if (number === 1) {
       if (count === 3 || count === 4 || count === 5) {
@@ -85,6 +83,7 @@ class RibbitContainer extends Component {
           count: count - 1,
           ribbitImageEncoding1: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 2) {
       if (count === 4 || count === 5) {
@@ -94,6 +93,7 @@ class RibbitContainer extends Component {
           count: count - 1,
           ribbitImageEncoding2: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 3) {
       if (count === 5) {
@@ -103,12 +103,14 @@ class RibbitContainer extends Component {
           count: count - 1,
           ribbitImageEncoding3: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 4) {
       this.setState({
         count: count - 1,
         ribbitImageEncoding4: '',
       });
+      formData.delete(`file[${count}]`);
     } else {
       alert('삭제할 이미지가 존재하지 않습니다.');
     }
@@ -123,10 +125,6 @@ class RibbitContainer extends Component {
       ribbitImageEncoding2,
       ribbitImageEncoding3,
       ribbitImageEncoding4,
-      ribbitImage1,
-      ribbitImage2,
-      ribbitImage3,
-      ribbitImage4,
     } = this.state;
     return (
       <div onClick={event => this.MaintainContent(event)} className="Ribbit__Modal">
@@ -186,7 +184,7 @@ class RibbitContainer extends Component {
               ribbitImage4={ribbitImageEncoding4}
               Delete={this.DeleteImage}
             />
-            <div onClick={() => Post(ribbitImage1, ribbitImage2, ribbitImage3, ribbitImage4)} className="BodyMenu__Ribbit">
+            <div onClick={() => Post(this.DeleteRibbitImage)} className="BodyMenu__Ribbit">
               <span className="BodyMenu__Ribbit__Text">리빗하기</span>
             </div>
           </div>
