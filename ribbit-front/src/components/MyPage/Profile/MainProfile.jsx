@@ -37,11 +37,6 @@ const MainProfile = () => (
       </div>
     </div>
     <img src={RibbitIcon} alt="profile" className="profile-photo" />
-    <div className="user-name-id">
-      <span>{userName}</span>
-      <br />
-      <span>{userAddress}</span>
-    </div>
   </div>
 );
 

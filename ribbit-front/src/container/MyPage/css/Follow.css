@@ -1,0 +1,32 @@
+.follow__profile {
+    display: inline-block;
+    width: 400px;
+    background-color: #d0ddd0;
+    padding: 15px;
+}
+
+.follow__profile-cast {
+    display: flex;
+}
+
+.follow__profile-photo {
+    flex: 2;
+    display: inline;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.follow__user-info {
+    flex: 3;
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.following-button {
+    position: relative;
+    left: 300px;
+    padding: 15px;
+    color: whitesmoke;
+    background-color: #679567;
+}
