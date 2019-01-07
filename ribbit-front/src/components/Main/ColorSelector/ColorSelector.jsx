@@ -25,6 +25,7 @@ class ColorSelector extends Component {
   ToggleActiveColor = (item) => {
     const InsertUserColor = document.getElementById('HeaderColors__InsertUserColor');
     const { colors, SelectColor } = this.state;
+    const { userId } = this.props;
 
     this.setState({
       SelectColor: item,
@@ -42,7 +43,7 @@ class ColorSelector extends Component {
     });
 
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/color', data, {
+      .post(`http://ribbit.jaehoon.kim:5000/api/${userId}/color`, data, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -86,6 +87,7 @@ class ColorSelector extends Component {
             alert(`${res.data.color}색으로 설정 되었습니다.`);
             localStorage.setItem('color', res.data.color);
         }
+        this.props.GetUserData();
       })
       .catch((error) => {
         alert(`${error.response.data.status}\n색상을 입력 후 다시 한번 클릭해주세요.`);

@@ -17,6 +17,7 @@ const SearchDataView = ({ UserData, index }) => (
     </div>
     <div className="SearchBodyContent__NameLabel">
       <span className="SearchBodyContentNameLabel__Name">{UserData.nickname}</span>
+      <span className="SearchBodyContentNameLabel__Id">{UserData.user_id}</span>
     </div>
   </div>
 );

@@ -23,6 +23,16 @@ class App extends Component {
       SearchData: [],
       SearchName: '',
       RandomWriting: '',
+      // 아래 부터 유저 데이터
+      backgroundImage: '',
+      followNum: 0,
+      followerNum: 0,
+      introduction: '소개를 작성해주세요.',
+      nickname: '',
+      profileImage: '',
+      userId: '',
+      // posting 데이터
+      post: [],
     };
   }
 
@@ -85,10 +95,8 @@ class App extends Component {
   };
 
   GetUserData = () => {
-    const { SearchName } = this.state;
-
     axios
-      .get('http://ribbit.jaehoon.kim:5000/api/main-page', {
+      .get('http://ribbit.jaehoon.kim:5000/api/main', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -96,17 +104,42 @@ class App extends Component {
       })
       .then((res) => {
         const UserData = res.data;
-        console.log(UserData);
+        this.setState({
+          backgroundImage: UserData.user_info.background_image,
+          followNum: UserData.user_info.follow_num,
+          followerNum: UserData.user_info.follower_num,
+          introduction: UserData.user_info.introduction,
+          nickname: UserData.user_info.nickname,
+          profileImage: UserData.user_info.profile_image,
+          userId: UserData.user_info.user_id,
+          post: UserData.post,
+        });
       })
       .catch((error) => {
-        alert('서버에서 데이터를 불러오지 못 하였습니다.');
+        if (localStorage.getItem('token')) {
+          alert('서버에서 데이터를 불러오지 못 하였습니다.');
+        } else {
+          alert('토큰이 없쪄염');
+        }
       });
   };
 
   render() {
     const Token = localStorage.getItem('token');
 
-    const { SearchData, SearchName, RandomWriting } = this.state;
+    const {
+      SearchData,
+      SearchName,
+      RandomWriting,
+      backgroundImage,
+      followNum,
+      followerNum,
+      introduction,
+      nickname,
+      profileImage,
+      userId,
+      post,
+    } = this.state;
     return (
       <div className="App">
         <BrowserRouter>
@@ -124,7 +157,19 @@ class App extends Component {
             <Switch>
               <Route
                 path="/"
-                component={() => <Main Whether={!!(Token !== '')} GetUserData={this.GetUserData} />}
+                render={() => (
+                  <Main
+                    Whether={!!(Token !== '')}
+                    GetUserData={this.GetUserData}
+                    backgroundImage={backgroundImage}
+                    followNum={followNum}
+                    followerNum={followerNum}
+                    nickname={nickname}
+                    profileImage={profileImage}
+                    userId={userId}
+                    post={post}
+                  />
+                )}
                 exact
               />
               {/* 메인 페이지 */}

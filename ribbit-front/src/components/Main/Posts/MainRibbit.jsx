@@ -125,11 +125,12 @@ class MainRibbit extends Component {
     const {
       MainribbitImage1, MainribbitImage2, MainribbitImage3, MainribbitImage4,
     } = this.state;
+    // const {profileImage} = this.props;
     return (
       <div className="MainPosts__MainRibbit">
         <div className="MainRibbit__Content">
           <div className="MainRibbitContent__UserProfileCover">
-            <i className="fas fa-user MainRibbitContent__UserProfile" />
+            {/* {profileImage<i className="fas fa-user MainRibbitContent__UserProfile" />} */}
           </div>
           <div className="MainRibbitContent__InputCover">
             <textarea

@@ -7,24 +7,45 @@ import Register from '../../components/Regiseter/Register/Register';
 class Main extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      UserData: {},
+    };
   }
 
   componentDidMount() {
-    this.props.GetUserData();
+    const { GetUserData } = this.props;
+    GetUserData();
   }
 
   render() {
-    const { Whether } = this.props;
+    const {
+      GetUserData,
+      Whether,
+      backgroundImage,
+      followNum,
+      followerNum,
+      nickname,
+      profileImage,
+      userId,
+      post,
+    } = this.props;
+
     return (
       <div className="Main">
         {Whether ? (
           <div className="Main__Content">
-            <Profile />
+            <Profile
+              nickname={nickname}
+              userId={userId}
+              backgroundImage={backgroundImage}
+              profileImage={profileImage}
+              followNum={followNum}
+              followerNum={followerNum}
+            />
             <div className="filter" />
-            <Posts />
+            <Posts post={post} nickname={nickname} profileImage={profileImage} userId={userId} />
             <div className="filter" />
-            <ColorSelector />
+            <ColorSelector userId={userId} GetUserData={GetUserData} />
           </div>
         ) : (
           <div className="Main__Register">

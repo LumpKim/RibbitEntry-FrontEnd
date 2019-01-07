@@ -19,7 +19,7 @@ class Signup extends Component {
     this.setState({
       [e.target.name]: e.target.value.trim(),
       UserException: !!(
-        /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id)
+        /^[a-z0-9+\.-]+/.test(Id)
         && /^[a-z0-9_-]+/.test(PassWord)
         && /^[a-z0-9_-]+/.test(NickName)
       ),
@@ -35,12 +35,12 @@ class Signup extends Component {
     });
 
     if (
-      /^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,28})$/.test(Id)
+      /^[a-z0-9+\.-]+/.test(Id)
       && /^[a-z0-9_-]+/.test(PassWord)
       && /^[a-z0-9_-]+/.test(NickName)
     ) {
       axios
-        .post('http://ribbit.jaehoon.kim:5000/api/sign-up', data, {
+        .post('http://ribbit.jaehoon.kim:5000/api/signUp', data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((res) => {
@@ -49,7 +49,7 @@ class Signup extends Component {
         .catch((res) => {
           alert('동일한 아이디가 존재합니다.');
         });
-    } else if (!/^([a-z0-9+\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,12})$/.test(Id)) {
+    } else if (!/^[a-z0-9+\.-]+/.test(Id)) {
       alert('아이디가 옳바르지 않습니다.');
     } else if (!/[a-z0-9_-]+/.test(PassWord)) {
       alert('비밀번호가 옳바르지 않습니다.');
@@ -78,8 +78,8 @@ class Signup extends Component {
                   value={Id}
                   className="SignUpForm__Input"
                   id="SignUpForm__Email"
-                  type="email"
-                  placeholder="example@gmail.com"
+                  type="text"
+                  placeholder="example"
                   onChange={e => this.HandleInput(e)}
                 />
               </label>
