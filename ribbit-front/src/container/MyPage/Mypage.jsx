@@ -7,7 +7,12 @@ const Mypage = () => (
   <div>
     <MainProfile />
     <div className="my-page">
-      <UserInfo />
+      <div className="user-info">
+        <UserInfo />
+      </div>
+      <div className="page-content">
+        fff
+      </div>
     </div>
   </div>
 );

@@ -6,10 +6,16 @@ import '../css/MyPage.css';
 
 const Followers = () => (
   <div>
-    <MainProfile />
+    <div>
+      <MainProfile />
+    </div>
     <div className="my-page">
-      <UserInfo />
-      <Follow />
+      <div className="user-info">
+        <UserInfo />
+      </div>
+      <div className="page-content">
+        <Follow />
+      </div>
     </div>
   </div>
 );

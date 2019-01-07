@@ -1,17 +1,5 @@
-.user-name-id {
-    display: inline-block;
-    position: relative;
-    top: -150px;
-    left: -170px;
-}
-
 .user-name {
     font-size: 30pt;
-    font-weight: bold;
-}
-
-.user-name:hover {
-    text-decoration: underline;
 }
 
 .user-address {
@@ -20,5 +8,9 @@
 }
 
 .user-address:hover {
+    text-decoration: underline;
+}
+
+.user-name:hover {
     text-decoration: underline;
 }

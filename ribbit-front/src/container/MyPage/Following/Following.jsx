@@ -8,8 +8,12 @@ const Following = () => (
   <div>
     <MainProfile />
     <div className="my-page">
-      <UserInfo />
-      <Follow />
+      <div className="user-info">
+        <UserInfo />
+      </div>
+      <div className="page-content">
+        <Follow />
+      </div>
     </div>
   </div>
 );

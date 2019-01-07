@@ -6,7 +6,7 @@ const userAddress = 'ribbiter';
 const userName = 'Ribbiter';
 
 const UserInfo = () => (
-  <div>
+  <div className="user-info">
     <Link to={`/user/${userAddress}`} className="user-name-id">
       <span className="user-name">{userName}</span>
       <br />
