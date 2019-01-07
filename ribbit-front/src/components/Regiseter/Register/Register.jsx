@@ -9,7 +9,12 @@ const Register = () => (
       <p className="RegisterHeader__Title">
         지금 세계 <strong>곳곳에서</strong> 무슨 일이 일어나고 있는지 확인하세요.
       </p>
-      <img className="RegisterHeader__Icon" src={RibbitIcon} alt="투명 아이콘" />
+      <img
+        onClick={e => console.log(e)}
+        className="RegisterHeader__Icon"
+        src={RibbitIcon}
+        alt="투명 아이콘"
+      />
     </div>
     <div className="Register__Body">
       <Link to="/user/signup">
