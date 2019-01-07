@@ -125,7 +125,7 @@ class MainRibbit extends Component {
     const {
       MainribbitImage1, MainribbitImage2, MainribbitImage3, MainribbitImage4,
     } = this.state;
-    const {profileImage} = this.props;
+    // const {profileImage} = this.props;
     return (
       <div className="MainPosts__MainRibbit">
         <div className="MainRibbit__Content">
