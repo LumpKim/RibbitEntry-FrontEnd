@@ -31,6 +31,7 @@ class App extends Component {
       nickname: '',
       profileImage: '',
       userId: '',
+      buttonStatus: '프로필 수정',
       // posting 데이터
       post: [],
     };
@@ -137,6 +138,7 @@ class App extends Component {
       profileImage,
       userId,
       post,
+      buttonStatus,
     } = this.state;
     return (
       <div className="App">
@@ -203,6 +205,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
+                    buttonStatus={buttonStatus}
                   />
                 )}
                 exact
@@ -220,6 +223,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
+                    buttonStatus={buttonStatus}
                   />
                 )}
                 exact
@@ -237,6 +241,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
+                    buttonStatus={buttonStatus}
                   />
                 )}
                 exact

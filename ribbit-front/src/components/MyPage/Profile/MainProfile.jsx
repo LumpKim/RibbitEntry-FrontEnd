@@ -5,11 +5,10 @@ import './css/Profile.css';
 
 class MainProfile extends Component {
   render() {
-    const buttonStatus = '프로필 수정';
     const {
       headerImg, userAddress,
       userFollowingData, userFollowerData,
-      profileImg,
+      profileImg, buttonStatus,
     } = this.props;
 
     return (

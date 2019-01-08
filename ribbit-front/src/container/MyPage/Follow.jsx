@@ -5,22 +5,23 @@ import { RibbitIcon } from '../../assets/index';
 
 class Follow extends Component {
   render() {
-    const userName = 'follower';
-    const userAddress = 'following';
+    const {
+      followName, followAddress,
+    } = this.props;
 
     return (
       <div className="follow__profile">
-        <Link to={`/username/${userAddress}`}>
+        <Link to={`/${followAddress}`}>
           <div className="follow__profile-cast">
             <div>
               <img src={RibbitIcon} alt="Profile" className="follow__profile-photo" />
             </div>
             <div className="follow__user-info">
-              <span className="user-name">{userName}</span>
+              <span className="user-name">{followName}</span>
               <br />
               <span className="user-address">
                 @
-                {userAddress}
+                {followAddress}
               </span>
             </div>
           </div>

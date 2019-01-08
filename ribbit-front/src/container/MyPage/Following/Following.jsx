@@ -6,21 +6,29 @@ import '../css/MyPage.css';
 
 class Following extends Component {
   render() {
+    const {
+      userAddress, userFollowerData,
+      userFollowingData, headerImg,
+      profileImg, userName,
+      userIntroduction, buttonStatus,
+    } = this.props;
+
     return (
       <div>
         <MainProfile
-          userAddress={this.props.userAddress}
-          userFollowingData={this.props.userFollowingData}
-          userFollowerData={this.props.userFollowerData}
-          headerImg={this.props.headerImg}
-          profileImg={this.props.profileImg}
+          userAddress={userAddress}
+          userFollowingData={userFollowingData}
+          userFollowerData={userFollowerData}
+          headerImg={headerImg}
+          profileImg={profileImg}
+          buttonStatus={buttonStatus}
         />
         <div className="my-page">
           <div className="user-info">
             <UserInfo
-              userName={this.props.userName}
-              userAddress={this.props.userAddress}
-              userIntroduction={this.props.userIntroduction}
+              userName={userName}
+              userAddress={userAddress}
+              userIntroduction={userIntroduction}
             />
           </div>
           <div className="page-content">

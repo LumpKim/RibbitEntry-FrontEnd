@@ -4,18 +4,23 @@ import './css/UserInfo.css';
 
 class UserInfo extends Component {
   render() {
+    const {
+      userAddress, userName,
+      userIntroduction,
+    } = this.props;
+
     return (
       <div className="user-info">
-        <Link to={`/username/${this.props.userAddress}`} className="user-name-id">
-          <span className="user-name">{this.props.userName}</span>
+        <Link to={`/username/${userAddress}`} className="user-name-id">
+          <span className="user-name">{userName}</span>
           <br />
           <span className="user-address">
             @
-            {this.props.userAddress}
+            {userAddress}
           </span>
           <br />
           <span className="user-introduction">
-            {this.props.userIntroduction}
+            {userIntroduction}
           </span>
         </Link>
       </div>
