@@ -118,8 +118,6 @@ class App extends Component {
       .catch((error) => {
         if (localStorage.getItem('token')) {
           alert('서버에서 데이터를 불러오지 못 하였습니다.');
-        } else {
-          alert('토큰이 없쪄염');
         }
       });
   };
@@ -151,6 +149,8 @@ class App extends Component {
               TrueSearch={this.TrueSearch}
               GetUserData={this.GetUserData}
               formData={formData}
+              profileImage={profileImage}
+              userId={userId}
             />
             {/* Header 컴포넌트와 라우터 컴포넌트가 곂치지 않도록 block역할을 하는 엘리먼트 */}
             <div className="header__background" />
@@ -160,6 +160,7 @@ class App extends Component {
                 render={() => (
                   <Main
                     Whether={!!(Token !== '')}
+                    formData={formData}
                     GetUserData={this.GetUserData}
                     backgroundImage={backgroundImage}
                     followNum={followNum}
@@ -181,6 +182,7 @@ class App extends Component {
                     SearchData={SearchData}
                     UserName={SearchName}
                     StateRandomWriting={RandomWriting}
+                    userId={userId}
                   />
                 )}
                 exact

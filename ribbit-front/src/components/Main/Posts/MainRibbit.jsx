@@ -26,31 +26,19 @@ class MainRibbit extends Component {
   // 리빗할때 이미지파일을 state에 저장함.
   handleFileRibbitMain = async (e) => {
     const { count } = this.state;
+    const { formData } = this.props;
 
     const fileList = e.target.files;
     let file = fileList[0];
 
+    formData.append(`file[${count}]`, file);
+
     const data = await this.encodeBase64ImageFile(file);
 
-    if (count === 1) {
+    if (count <= 4) {
       this.setState({
         count: count + 1,
-        MainribbitImage1: data,
-      });
-    } else if (count === 2) {
-      this.setState({
-        count: count + 1,
-        MainribbitImage2: data,
-      });
-    } else if (count === 3) {
-      this.setState({
-        count: count + 1,
-        MainribbitImage3: data,
-      });
-    } else if (count === 4) {
-      this.setState({
-        count: count + 1,
-        MainribbitImage4: data,
+        [`MainribbitImage${count}`]: data,
       });
     } else {
       alert('이미지 한도를 초과하였습니다.');
@@ -66,6 +54,7 @@ class MainRibbit extends Component {
   // 이미지 파일 삭제 하는 함수
   DeleteImage = (number) => {
     const { count } = this.state;
+    const { formData } = this.props;
 
     if (number === 1) {
       if (count === 3 || count === 4 || count === 5) {
@@ -75,6 +64,7 @@ class MainRibbit extends Component {
           count: count - 1,
           MainribbitImage1: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 2) {
       if (count === 4 || count === 5) {
@@ -84,6 +74,7 @@ class MainRibbit extends Component {
           count: count - 1,
           MainribbitImage2: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 3) {
       if (count === 5) {
@@ -93,12 +84,14 @@ class MainRibbit extends Component {
           count: count - 1,
           MainribbitImage3: '',
         });
+        formData.delete(`file[${count}]`);
       }
     } else if (number === 4) {
       this.setState({
         count: count - 1,
         MainribbitImage4: '',
       });
+      formData.delete(`file[${count}]`);
     } else {
       alert('삭제할 이미지가 존재하지 않습니다.');
     }
@@ -109,6 +102,7 @@ class MainRibbit extends Component {
     this.setState({
       MainRibbit: e.target.value,
     });
+    this.props.formData.set('content', this.state.ribbitData);
   };
 
   // textarea태그가 글자에 맞게 늘어나도록 하는 함수
@@ -121,16 +115,39 @@ class MainRibbit extends Component {
     }
   };
 
+  DeleteData = () => {
+    this.setState({
+      MainRibbit: '',
+      count: 1,
+      MainribbitImage1: '',
+      MainribbitImage2: '',
+      MainribbitImage3: '',
+      MainribbitImage4: '',
+    });
+  };
+
   render() {
     const {
-      MainribbitImage1, MainribbitImage2, MainribbitImage3, MainribbitImage4,
+      MainribbitImage1,
+      MainribbitImage2,
+      MainribbitImage3,
+      MainribbitImage4,
+      MainRibbit,
     } = this.state;
-    // const {profileImage} = this.props;
+    const { profileImage, PostRibbitData } = this.props;
     return (
       <div className="MainPosts__MainRibbit">
         <div className="MainRibbit__Content">
           <div className="MainRibbitContent__UserProfileCover">
-            {/* {profileImage<i className="fas fa-user MainRibbitContent__UserProfile" />} */}
+            {profileImage !== '' ? (
+              <img
+                className="fas fa-user MainRibbitContent__UserProfile"
+                src={profileImage}
+                alt="프로필사진"
+              />
+            ) : (
+              <i className="fas fa-user MainRibbitContent__UserProfile" />
+            )}
           </div>
           <div className="MainRibbitContent__InputCover">
             <textarea
@@ -139,6 +156,7 @@ class MainRibbit extends Component {
               className="MainRibbitInputCover__Input"
               id="MainRibbitInputCover__Input"
               type="text"
+              value={MainRibbit}
               placeholder="무슨 일이 일어나고 있나요?"
               onChange={this.GetMainTextData}
             />
@@ -167,6 +185,9 @@ class MainRibbit extends Component {
             ribbitImage4={MainribbitImage4}
             Delete={this.DeleteImage}
           />
+        </div>
+        <div onClick={() => PostRibbitData(this.DeleteData)} className="MainMenu__Ribbit">
+          <span className="MainMenu__Ribbit__Text">리빗하기</span>
         </div>
       </div>
     );

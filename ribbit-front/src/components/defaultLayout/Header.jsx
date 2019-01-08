@@ -17,22 +17,8 @@ class Header extends Component {
       ribbitTurn: false,
       ribbitCancle: false,
       ribbitData: '',
-      UserName: '',
-      hover: false,
     };
   }
-
-  hoverOn = () => {
-    this.setState({
-      hover: true,
-    });
-  };
-
-  hoverOff = () => {
-    this.setState({
-      hover: false,
-    });
-  };
 
   // 스크롤을 0.0034초 마다 -50px씩 줄임.
   // 스크롤이 0이 되면 setInterval 함수 실행을 중단.
@@ -128,24 +114,16 @@ class Header extends Component {
         },
       })
       .then((res) => {
-        this.setState({
-          ribbitData: '',
-        });
         DeleteImage();
+        this.setState({
+          ribbitTurn: false,
+          ribbitCancle: false,
+        });
+        alert('게시글 작성을 완료하였습니다!');
+        this.props.GetUserData();
       })
       .catch((error) => {
-        // switch (error.response.status) {
-        //   case 401:
-        //     break;
-        //   case 422:
-        //     // console.log(this.props.Token);
-        //     break;
-        //   case 500:
-        //     console.log('Server Error!');
-        //     break;
-        //   default:
-        //     alert('네트워크를 확인하여 주세요.');
-        // }
+        alert('에러가 발생했습니다!');
       });
   };
 
@@ -156,10 +134,10 @@ class Header extends Component {
   };
 
   render() {
+    const { ribbitTurn, ribbitData, ribbitCancle } = this.state;
     const {
-      ribbitTurn, ribbitData, ribbitCancle, UserName,
-    } = this.state;
-    const { Whether, GetSearchData } = this.props;
+      Whether, GetSearchData, profileImage, userId,
+    } = this.props;
     return (
       <React.Fragment>
         <div
@@ -198,18 +176,25 @@ class Header extends Component {
               {Whether ? (
                 <React.Fragment>
                   <div onClick={this.HandleUserDropdown} className="header__profile">
-                    {/* 이 태그는 이미지를 넣는 기능을 만들면 바뀌도록 해줘야함. - 변동된 엘리멘트의 class명은 이것의 마지막 class와 같음. */}
-                    <i
-                      style={{ color: localStorage.color, opacity: 0.6 }}
-                      className="fas fa-user user__profile"
-                    />{' '}
+                    {profileImage !== '' ? (
+                      <img
+                        className="fas fa-user user__profile"
+                        src={profileImage}
+                        alt="프로필사진"
+                      />
+                    ) : (
+                      <i
+                        style={{ color: localStorage.color, opacity: 0.6 }}
+                        className="fas fa-user user__profile"
+                      />
+                    )}
                   </div>
                   <div
                     className="user__dropDown"
                     id="user__dropDown"
                     onClick={this.HandleUserDropdown}
                   >
-                    <Link to={`/username/${UserName}`} className="userDropDown__Content">
+                    <Link to={`/username/${userId}`} className="userDropDown__Content">
                       <span>프로필</span>
                     </Link>
                     <div onClick={() => this.HandleSearch()} className="userDropDown__Content">

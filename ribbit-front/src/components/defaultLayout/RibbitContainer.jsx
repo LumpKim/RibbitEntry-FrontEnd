@@ -184,7 +184,10 @@ class RibbitContainer extends Component {
               ribbitImage4={ribbitImageEncoding4}
               Delete={this.DeleteImage}
             />
-            <div onClick={() => Post(this.DeleteRibbitImage)} className="BodyMenu__Ribbit">
+            <div
+              onClick={() => Post(() => this.DeleteRibbitImage(Delete))}
+              className="BodyMenu__Ribbit"
+            >
               <span className="BodyMenu__Ribbit__Text">리빗하기</span>
             </div>
           </div>
