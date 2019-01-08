@@ -30,20 +30,34 @@ class Mypage extends Component {
       buttonStatus,
       userName,
       userIntroduction,
+      saveButtonStatus,
     } = this.props;
 
     return (
       <div>
-        <MainProfile
-          userAddress={userAddress}
-          userFollowingData={userFollowingData}
-          userFollowerData={userFollowerData}
-          headerImg={headerImg}
-          profileImg={profileImg}
-          buttonStatus={buttonStatus}
-          ChangeButtonValue={this.ChangeButtonValue}
-          buttonValue={this.buttonValue}
-        />
+        {this.buttonValue === false ? (
+          <MainProfile
+            userAddress={userAddress}
+            userFollowingData={userFollowingData}
+            userFollowerData={userFollowerData}
+            headerImg={headerImg}
+            profileImg={profileImg}
+            buttonStatus={buttonStatus}
+            ChangeButtonValue={this.ChangeButtonValue}
+            buttonValue={this.buttonValue}
+          />
+        ) : (
+          <EditProfile
+            userAddress={userAddress}
+            userFollowingData={userFollowingData}
+            userFollowerData={userFollowerData}
+            headerImg={headerImg}
+            profileImg={profileImg}
+            buttonStatus={saveButtonStatus}
+            ChangeButtonValue={this.ChangeButtonValue}
+            buttonValue={this.buttonValue}
+          />
+        )}
         <div className="my-page">
           <div className="user-info">
             <UserInfo
