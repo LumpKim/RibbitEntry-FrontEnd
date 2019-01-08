@@ -1,39 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { RibbitIcon } from '../../../assets/index';
 import './css/Profile.css';
 
-const MainProfile = props => (
+const MainProfile = ({
+  headerImg,
+  userAddress,
+  userFollowingData,
+  userFollowerData,
+  ChangeButtonValue,
+  buttonStatus,
+  profileImg,
+}) => (
   <div>
-    {props.headerImg !== '' ? (
-      <img src={props.headerImg} alt="header" className="header-photo" />
+    {headerImg !== '' ? (
+      <img src={headerImg} alt="header" className="header-photo" />
     ) : (
       <div className="header-photo" />
     )}
     <div className="info-tab">
       <div className="gap-by-info" />
       <div className="info-elements">
-        <Link to={`/username/${props.userAddress}/following`}>
+        <Link to={`/username/${userAddress}/following`}>
           <span className="info-name">following</span>
           <br />
-          <span className="info-content">{props.userFollowingData}</span>
+          <span className="info-content">{userFollowingData}</span>
         </Link>
       </div>
       <div className="info-elements">
-        <Link to={`/username/${props.userAddress}/followers`}>
+        <Link to={`/username/${userAddress}/followers`}>
           <span className="info-name">followers</span>
           <br />
-          <span className="info-content">{props.userFollowerData}</span>
+          <span className="info-content">{userFollowerData}</span>
         </Link>
       </div>
-      <div className="edit-button">
-        <button type="button" className="edit-or-follow">
-          {props.buttonStatus}
-        </button>
-      </div>
+      {buttonStatus !== '' ? (
+        <div className="edit-button">
+          <button type="button" className="edit-or-follow" onClick={ChangeButtonValue}>
+            {buttonStatus}
+          </button>
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
-    {props.profileImg !== '' ? (
-      <img src={props.profileImg} alt="profile" className="profile-photo" />
+    {profileImg !== '' ? (
+      <img src={profileImg} alt="profile" className="profile-photo" />
     ) : (
       <img src={RibbitIcon} alt="default-profile" className="profile-photo" />
     )}

@@ -204,7 +204,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
-                    buttonStatus="프로필 수정"
+                    buttonStatus=""
                   />
                 )}
                 exact
@@ -222,7 +222,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
-                    buttonStatus="프로필 수정"
+                    buttonStatus=""
                   />
                 )}
                 exact
