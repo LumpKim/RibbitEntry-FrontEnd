@@ -115,12 +115,9 @@ class App extends Component {
           userId: UserData.user_info.user_id,
           post: UserData.post,
         });
-        console.log(UserData);
       })
       .catch((error) => {
-        if (localStorage.getItem('token')) {
-          alert('서버에서 데이터를 불러오지 못 하였습니다.');
-        }
+        localStorage.setItem('token', '');
       });
   };
 
@@ -139,7 +136,6 @@ class App extends Component {
         });
       })
       .catch((error) => {
-        console.log(error);
         alert('서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.');
       });
   };
@@ -167,7 +163,7 @@ class App extends Component {
         <BrowserRouter>
           <React.Fragment>
             <Header
-              Whether={!!(Token !== '')}
+              Whether={Token}
               Token={Token}
               GetSearchData={this.SearchData}
               TrueSearch={this.TrueSearch}
@@ -183,7 +179,7 @@ class App extends Component {
                 path="/"
                 render={() => (
                   <Main
-                    Whether={!!(Token !== '')}
+                    Whether={Token}
                     formData={formData}
                     GetUserData={this.GetUserData}
                     backgroundImage={backgroundImage}
