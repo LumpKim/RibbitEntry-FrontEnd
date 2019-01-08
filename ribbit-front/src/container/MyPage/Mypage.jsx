@@ -35,7 +35,7 @@ class Mypage extends Component {
 
     return (
       <div>
-        {this.buttonValue === false ? (
+        {this.state.buttonValue === false ? (
           <MainProfile
             userAddress={userAddress}
             userFollowingData={userFollowingData}

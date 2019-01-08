@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RibbitIcon } from '../../../assets/index';
 import './css/Profile.css';
 
 const EditProfile = ({
@@ -9,7 +8,6 @@ const EditProfile = ({
   userFollowerData,
   ChangeButtonValue,
   buttonStatus,
-  profileImg,
 }) => (
   <div>
     <div className="header-photo">
