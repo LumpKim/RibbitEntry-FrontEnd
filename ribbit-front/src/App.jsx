@@ -199,6 +199,8 @@ class App extends Component {
                     userName={nickname}
                     userAddress={userId}
                     userIntroduction={introduction}
+                    userFollowingData={followNum}
+                    userFollowerData={followerNum}
                   />
                 )}
                 exact
@@ -212,6 +214,8 @@ class App extends Component {
                     userName={nickname}
                     userAddress={userId}
                     userIntroduction={introduction}
+                    userFollowingData={followNum}
+                    userFollowerData={followerNum}
                   />
                 )}
                 exact
@@ -225,6 +229,8 @@ class App extends Component {
                     userName={nickname}
                     userAddress={userId}
                     userIntroduction={introduction}
+                    userFollowingData={followNum}
+                    userFollowerData={followerNum}
                   />
                 )}
                 exact

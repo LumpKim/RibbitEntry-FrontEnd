@@ -8,7 +8,11 @@ class Following extends Component {
   render() {
     return (
       <div>
-        <MainProfile />
+        <MainProfile
+          userAddress={this.props.userAddress}
+          userFollowingData={this.props.userFollowingData}
+          userFollowerData={this.props.userFollowerData}
+        />
         <div className="my-page">
           <div className="user-info">
             <UserInfo
