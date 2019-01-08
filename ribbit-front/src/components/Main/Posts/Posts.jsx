@@ -4,16 +4,11 @@ import MainRibbit from './MainRibbit';
 import PostInfiniteScroll from './PostInfiniteScroll';
 
 const Posts = ({
-  post, nickname, profileImage, userId, formData, PostRibbitData,
+  post, profileImage, formData, PostRibbitData, RibbitLikeToggle, RibbitLike,
 }) => (
   <div className="MainContent__Posts">
     <MainRibbit profileImage={profileImage} formData={formData} PostRibbitData={PostRibbitData} />
-    <PostInfiniteScroll
-      post={post}
-      nickname={nickname}
-      profileImage={profileImage}
-      userId={userId}
-    />
+    <PostInfiniteScroll post={post} RibbitLikeToggle={RibbitLikeToggle} RibbitLike={RibbitLike} />
   </div>
 );
 
