@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import MainProfile from '../../components/MyPage/Profile/MainProfile';
-import UserInfo from '../../components/MyPage/Profile/UserInfo';
+import { MainProfile, EditProfile, UserInfo } from '../../components/MyPage/index';
 import './css/MyPage.css';
 
 class Mypage extends Component {
@@ -10,6 +9,16 @@ class Mypage extends Component {
       buttonValue: false,
     };
   }
+
+  // 스테이트 바꾸는 함수
+
+  ChangeButtonValue = () => {
+    const { buttonValue } = this.state;
+    this.setState({
+      buttonValue: !buttonValue,
+    });
+    alert(buttonValue);
+  };
 
   render() {
     const {
@@ -21,18 +30,34 @@ class Mypage extends Component {
       buttonStatus,
       userName,
       userIntroduction,
+      saveButtonStatus,
     } = this.props;
 
     return (
       <div>
-        <MainProfile
-          userAddress={userAddress}
-          userFollowingData={userFollowingData}
-          userFollowerData={userFollowerData}
-          headerImg={headerImg}
-          profileImg={profileImg}
-          buttonStatus={buttonStatus}
-        />
+        {this.state.buttonValue === false ? (
+          <MainProfile
+            userAddress={userAddress}
+            userFollowingData={userFollowingData}
+            userFollowerData={userFollowerData}
+            headerImg={headerImg}
+            profileImg={profileImg}
+            buttonStatus={buttonStatus}
+            ChangeButtonValue={this.ChangeButtonValue}
+            buttonValue={this.buttonValue}
+          />
+        ) : (
+          <EditProfile
+            userAddress={userAddress}
+            userFollowingData={userFollowingData}
+            userFollowerData={userFollowerData}
+            headerImg={headerImg}
+            profileImg={profileImg}
+            buttonStatus={saveButtonStatus}
+            ChangeButtonValue={this.ChangeButtonValue}
+            buttonValue={this.buttonValue}
+          />
+        )}
         <div className="my-page">
           <div className="user-info">
             <UserInfo

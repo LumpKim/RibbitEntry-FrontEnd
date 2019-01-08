@@ -32,7 +32,6 @@ class App extends Component {
       nickname: '',
       profileImage: '',
       userId: '',
-      buttonStatus: '프로필 수정',
       // posting 데이터
       post: [],
     };
@@ -230,7 +229,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
-                    buttonStatus={buttonStatus}
+                    buttonStatus=""
                   />
                 )}
                 exact
@@ -248,7 +247,7 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
-                    buttonStatus={buttonStatus}
+                    buttonStatus=""
                   />
                 )}
                 exact
@@ -266,7 +265,8 @@ class App extends Component {
                     userFollowerData={followerNum}
                     headerImg={backgroundImage}
                     profileImg={profileImage}
-                    buttonStatus={buttonStatus}
+                    buttonStatus="프로필 수정"
+                    saveButtonStatus="변경 사항 저장"
                   />
                 )}
                 exact

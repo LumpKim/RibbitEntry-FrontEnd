@@ -1,23 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { RibbitIcon } from '../../../assets/index';
 import './css/Profile.css';
 
-const MainProfile = ({
-  headerImg,
+const EditProfile = ({
   userAddress,
   userFollowingData,
   userFollowerData,
   ChangeButtonValue,
   buttonStatus,
-  profileImg,
 }) => (
   <div>
-    {headerImg !== '' ? (
-      <img src={headerImg} alt="header" className="header-photo" />
-    ) : (
-      <div className="header-photo" />
-    )}
+    <div className="header-photo">
+      <span className="header-edit-icon">
+        <i className="far fa-plus-square" />
+      </span>
+    </div>
     <div className="info-tab">
       <div className="gap-by-info" />
       <div className="info-elements">
@@ -34,22 +31,18 @@ const MainProfile = ({
           <span className="info-content">{userFollowerData}</span>
         </Link>
       </div>
-      {buttonStatus !== '' ? (
-        <div className="edit-button">
-          <button type="button" className="edit-or-follow" onClick={ChangeButtonValue}>
-            {buttonStatus}
-          </button>
-        </div>
-      ) : (
-        <div />
-      )}
+      <div className="edit-button">
+        <button type="button" className="edit-or-follow" onClick={ChangeButtonValue}>
+          {buttonStatus}
+        </button>
+      </div>
     </div>
-    {profileImg !== '' ? (
-      <img src={profileImg} alt="profile" className="profile-photo" />
-    ) : (
-      <img src={RibbitIcon} alt="default-profile" className="profile-photo" />
-    )}
+    <div className="profile-photo">
+      <span className="profile-edit-icon">
+        <i className="far fa-plus-square" />
+      </span>
+    </div>
   </div>
 );
 
-export default MainProfile;
+export default EditProfile;
