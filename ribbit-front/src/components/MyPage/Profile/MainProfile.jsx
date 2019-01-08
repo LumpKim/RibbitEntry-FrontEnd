@@ -8,6 +8,7 @@ const userAddress = 'ribbiter';
 const userRibbitData = '0';
 const userFollowingData = '0';
 const userFollowersData = '0';
+const buttonStatus = '프로필 수정';
 
 const MainProfile = () => (
   <div>
@@ -34,6 +35,11 @@ const MainProfile = () => (
           <br />
           <span className="info-content">{userFollowersData}</span>
         </Link>
+      </div>
+      <div className="edit-button">
+        <button type="button" className="edit-or-follow">
+          {buttonStatus}
+        </button>
       </div>
     </div>
     <img src={RibbitIcon} alt="profile" className="profile-photo" />
