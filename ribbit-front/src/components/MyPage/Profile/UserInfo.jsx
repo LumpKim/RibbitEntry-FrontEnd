@@ -13,6 +13,10 @@ class UserInfo extends Component {
             @
             {this.props.userAddress}
           </span>
+          <br />
+          <span className="user-introduction">
+            {this.props.userIntroduction}
+          </span>
         </Link>
       </div>
     );

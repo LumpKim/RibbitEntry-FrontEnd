@@ -14,6 +14,7 @@ class Followers extends Component {
             <UserInfo
               userName={this.props.userName}
               userAddress={this.props.userAddress}
+              userIntroduction={this.props.userIntroduction}
             />
           </div>
           <div className="page-content">

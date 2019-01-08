@@ -198,6 +198,7 @@ class App extends Component {
                   <Following
                     userName={nickname}
                     userAddress={userId}
+                    userIntroduction={introduction}
                   />
                 )}
                 exact
@@ -210,6 +211,7 @@ class App extends Component {
                   <Followers
                     userName={nickname}
                     userAddress={userId}
+                    userIntroduction={introduction}
                   />
                 )}
                 exact
@@ -222,6 +224,7 @@ class App extends Component {
                   <MainMyPage
                     userName={nickname}
                     userAddress={userId}
+                    userIntroduction={introduction}
                   />
                 )}
                 exact
