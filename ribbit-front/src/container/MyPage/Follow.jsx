@@ -10,7 +10,7 @@ class Follow extends Component {
 
     return (
       <div className="follow__profile">
-        <Link to={`/user/${userAddress}`}>
+        <Link to={`/username/${userAddress}`}>
           <div className="follow__profile-cast">
             <div>
               <img src={RibbitIcon} alt="Profile" className="follow__profile-photo" />

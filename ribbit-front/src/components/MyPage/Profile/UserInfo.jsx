@@ -6,7 +6,7 @@ class UserInfo extends Component {
   render() {
     return (
       <div className="user-info">
-        <Link to={`/user/${this.props.userAddress}`} className="user-name-id">
+        <Link to={`/username/${this.props.userAddress}`} className="user-name-id">
           <span className="user-name">{this.props.userName}</span>
           <br />
           <span className="user-address">

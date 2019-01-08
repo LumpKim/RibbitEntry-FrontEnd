@@ -1,29 +1,46 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { RibbitIcon, HeaderPhoto } from '../../../assets/index';
+import { RibbitIcon } from '../../../assets/index';
 import './css/Profile.css';
 
 class MainProfile extends Component {
   render() {
     const buttonStatus = '프로필 수정';
+    const {
+      headerImg, userAddress,
+      userFollowingData, userFollowerData,
+      profileImg,
+    } = this.props;
 
     return (
       <div>
-        <img src={HeaderPhoto} alt="header" className="header-photo" />
+        {
+          headerImg !== '' ? (
+            <img
+              src={headerImg}
+              alt="header"
+              className="header-photo"
+            />
+          ) : (
+            <div
+              className="header-photo"
+            />
+          )
+        }
         <div className="info-tab">
           <div className="gap-by-info" />
           <div className="info-elements">
-            <Link to={`/username/${this.props.userAddress}/following`}>
+            <Link to={`/username/${userAddress}/following`}>
               <span className="info-name">following</span>
               <br />
-              <span className="info-content">{this.props.userFollowingData}</span>
+              <span className="info-content">{userFollowingData}</span>
             </Link>
           </div>
           <div className="info-elements">
-            <Link to={`/username/${this.props.userAddress}/followers`}>
+            <Link to={`/username/${userAddress}/followers`}>
               <span className="info-name">followers</span>
               <br />
-              <span className="info-content">{this.props.userFollowerData}</span>
+              <span className="info-content">{userFollowerData}</span>
             </Link>
           </div>
           <div className="edit-button">
@@ -32,7 +49,21 @@ class MainProfile extends Component {
             </button>
           </div>
         </div>
-        <img src={RibbitIcon} alt="profile" className="profile-photo" />
+        {
+          profileImg !== '' ? (
+            <img
+              src={profileImg}
+              alt="profile"
+              className="profile-photo"
+            />
+          ) : (
+            <img
+              src={RibbitIcon}
+              alt="default-profile"
+              className="profile-photo"
+            />
+          )
+        }
       </div>
     );
   }

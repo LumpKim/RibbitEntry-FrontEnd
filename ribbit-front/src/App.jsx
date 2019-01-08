@@ -201,6 +201,8 @@ class App extends Component {
                     userIntroduction={introduction}
                     userFollowingData={followNum}
                     userFollowerData={followerNum}
+                    headerImg={backgroundImage}
+                    profileImg={profileImage}
                   />
                 )}
                 exact
@@ -216,6 +218,8 @@ class App extends Component {
                     userIntroduction={introduction}
                     userFollowingData={followNum}
                     userFollowerData={followerNum}
+                    headerImg={backgroundImage}
+                    profileImg={profileImage}
                   />
                 )}
                 exact
@@ -231,6 +235,8 @@ class App extends Component {
                     userIntroduction={introduction}
                     userFollowingData={followNum}
                     userFollowerData={followerNum}
+                    headerImg={backgroundImage}
+                    profileImg={profileImage}
                   />
                 )}
                 exact

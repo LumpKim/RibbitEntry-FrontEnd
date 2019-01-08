@@ -12,6 +12,8 @@ class Followers extends Component {
           userAddress={this.props.userAddress}
           userFollowingData={this.props.userFollowingData}
           userFollowerData={this.props.userFollowerData}
+          headerImg={this.props.headerImg}
+          profileImg={this.props.profileImg}
         />
         <div className="my-page">
           <div className="user-info">
