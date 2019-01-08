@@ -32,7 +32,7 @@ class Followers extends Component {
             />
           </div>
           <div className="page-content">
-            <Follow />
+            Follower
           </div>
         </div>
       </div>

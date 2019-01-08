@@ -32,7 +32,7 @@ class Following extends Component {
             />
           </div>
           <div className="page-content">
-            <Follow />
+            following
           </div>
         </div>
       </div>
