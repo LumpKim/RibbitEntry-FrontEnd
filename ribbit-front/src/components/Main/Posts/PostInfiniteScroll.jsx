@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { Loading, RibbitOn, RibbitOff } from '../../../assets/index';
 import './css/PostInfiniteScroll.css';
 
@@ -13,6 +14,17 @@ class PostInfiniteScroll extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.post) {
+      this.setState({
+        hasMoreItems: false,
+      });
+    }
+  }
+  // ToggleItems = () => {
+
+  // };
+
   render() {
     const { post, RibbitLikeToggle, RibbitLike } = this.props;
     const loader = (
@@ -24,7 +36,7 @@ class PostInfiniteScroll extends Component {
     const items = [];
 
     if (post) {
-      post.reverse().map((track, i) => items.push(
+      post.map((track, i) => items.push(
         <div className="track">
           <div className="track__imageHolder">
             <Link to={`/${track.user}`} className="track__profile">
@@ -73,13 +85,14 @@ class PostInfiniteScroll extends Component {
 
     return (
       <div className="InfiniteScrollContainer">
-        <InfiniteScroll
-          pageStart={0}
-          // loadMore={() => this.loadItems()}
-          hasMore={this.state.hasMoreItems}
-          loader={loader}
-        >
-          <div className="InfiniteScrollContainer__Item">{!post ? <span className="InfiniteScrollNotItem">팔로우 / 팔로윙 데이터가 없습니다.</span> : items}</div>
+        <InfiniteScroll hasMore={this.state.hasMoreItems} loader={loader}>
+          <div className="InfiniteScrollContainer__Item">
+            {post !== [] ? (
+              <span className="InfiniteScrollNotItem">팔로우 / 팔로윙 데이터가 없습니다.</span>
+            ) : (
+              items
+            )}
+          </div>
         </InfiniteScroll>
       </div>
     );
