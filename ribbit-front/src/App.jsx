@@ -137,7 +137,6 @@ class App extends Component {
       profileImage,
       userId,
       post,
-      buttonStatus,
     } = this.state;
     return (
       <div className="App">
@@ -241,6 +240,7 @@ class App extends Component {
                     headerImg={backgroundImage}
                     profileImg={profileImage}
                     buttonStatus="프로필 수정"
+                    saveButtonStatus="변경 사항 저장"
                   />
                 )}
                 exact
