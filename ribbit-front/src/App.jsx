@@ -113,11 +113,11 @@ class App extends Component {
           nickname: UserData.user_info.nickname,
           profileImage: UserData.user_info.profile_image,
           userId: UserData.user_info.user_id,
-          post: UserData.post,
+          post: UserData.post ? UserData.post.reverse() : null,
         });
       })
       .catch((error) => {
-        localStorage.setItem('token', '');
+        alert(error.data);
       });
   };
 
