@@ -47,6 +47,8 @@ class Main extends Component {
       userId,
       post,
       formData,
+      RibbitLikeToggle,
+      RibbitLike,
     } = this.props;
 
     return (
@@ -64,11 +66,11 @@ class Main extends Component {
             <div className="filter" />
             <Posts
               post={post}
-              nickname={nickname}
-              profileImage={profileImage}
-              userId={userId}
               formData={formData}
+              profileImage={profileImage}
               PostRibbitData={this.PostRibbitData}
+              RibbitLikeToggle={RibbitLikeToggle}
+              RibbitLike={RibbitLike}
             />
             <div className="filter" />
             <ColorSelector userId={userId} GetUserData={GetUserData} />
