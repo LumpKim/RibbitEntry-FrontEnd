@@ -192,10 +192,28 @@ class App extends Component {
               <Route path="/:user" component={User} exact />
               {/* 유저 정보 페이지 */}
 
-              <Route path="/username/:user/following" component={Following} exact />
+              <Route
+                path="/username/:user/following"
+                component={() => (
+                  <Following
+                    userName={nickname}
+                    userAddress={userId}
+                  />
+                )}
+                exact
+              />
               {/* 마이페이지 팔로잉 */}
 
-              <Route path="/username/:user/followers" component={Followers} exact />
+              <Route
+                path="/username/:user/followers"
+                component={() => (
+                  <Followers
+                    userName={nickname}
+                    userAddress={userId}
+                  />
+                )}
+                exact
+              />
               {/* 마이페이지 팔로워 */}
 
               <Route
