@@ -12,11 +12,10 @@ class SearchComponent extends Component {
     };
   }
 
-  GoUserPage = (userId) => {
-    const { history } = this.props;
-    console.log(history);
+  GoUserPage = () => {
+    const { history, userId } = this.props;
 
-    history.push(`/${userId}`);
+    history.push(`/username/${userId}`);
   };
 
   render() {
@@ -37,7 +36,7 @@ class SearchComponent extends Component {
           <div className="SearchBody__Content">
             {UserData ? (
               UserData.map((item, index) => (
-                <SearchDataView GoUserPage={this.GoUserPage} UserData={item} index={index} />
+                <SearchDataView onclick={this.GoUserPage} UserData={item} index={index} />
               ))
             ) : (
               <NotSearchDataView UserName={UserName} />
