@@ -6,14 +6,10 @@ import '../css/MyPage.css';
 class Following extends Component {
   render() {
     const {
-      userAddress,
-      userFollowerData,
-      userFollowingData,
-      headerImg,
-      profileImg,
-      userName,
-      userIntroduction,
-      buttonStatus,
+      userAddress, userFollowerData,
+      userFollowingData, headerImg,
+      profileImg, userName,
+      userIntroduction, buttonStatus,
     } = this.props;
 
     return (
@@ -34,7 +30,9 @@ class Following extends Component {
               userIntroduction={userIntroduction}
             />
           </div>
-          <div className="page-content">following</div>
+          <div className="page-content">
+            following
+          </div>
         </div>
       </div>
     );
