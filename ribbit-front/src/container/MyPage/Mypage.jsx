@@ -17,7 +17,6 @@ class Mypage extends Component {
     this.setState({
       buttonValue: !buttonValue,
     });
-    alert(buttonValue);
   };
 
   render() {
@@ -36,19 +35,33 @@ class Mypage extends Component {
     return (
       <div>
         {this.state.buttonValue === false ? (
-          <MainProfile
-            userAddress={userAddress}
-            userFollowingData={userFollowingData}
-            userFollowerData={userFollowerData}
-            headerImg={headerImg}
-            profileImg={profileImg}
-            buttonStatus={buttonStatus}
-            ChangeButtonValue={this.ChangeButtonValue}
-            buttonValue={this.buttonValue}
-          />
+          <div>
+            <MainProfile
+              userAddress={userAddress}
+              userFollowingData={userFollowingData}
+              userFollowerData={userFollowerData}
+              headerImg={headerImg}
+              profileImg={profileImg}
+              buttonStatus={buttonStatus}
+              ChangeButtonValue={this.ChangeButtonValue}
+              buttonValue={this.buttonValue}
+            />
+            <div className="my-page">
+              <div className="user-info">
+                <UserInfo
+                  userName={userName}
+                  userAddress={userAddress}
+                  userIntroduction={userIntroduction}
+                />
+              </div>
+              <div className="page-content">My Ribbits</div>
+            </div>
+          </div>
         ) : (
           <EditProfile
             userAddress={userAddress}
+            userName={userName}
+            userIntroduction={userIntroduction}
             userFollowingData={userFollowingData}
             userFollowerData={userFollowerData}
             headerImg={headerImg}
@@ -58,16 +71,6 @@ class Mypage extends Component {
             buttonValue={this.buttonValue}
           />
         )}
-        <div className="my-page">
-          <div className="user-info">
-            <UserInfo
-              userName={userName}
-              userAddress={userAddress}
-              userIntroduction={userIntroduction}
-            />
-          </div>
-          <div className="page-content">fff</div>
-        </div>
       </div>
     );
   }
