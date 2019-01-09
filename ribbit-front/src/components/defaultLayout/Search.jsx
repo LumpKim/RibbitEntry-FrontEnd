@@ -28,6 +28,7 @@ class Search extends Component {
       .then((res) => {
         const UserData = res.data;
         this.props.GetSearchData(UserData, UserData[0].nickname);
+        console.log(UserData);
       })
       .catch((error) => {
         this.props.GetSearchData(false, searchText);

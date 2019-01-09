@@ -42,6 +42,9 @@
   color: black;
   width: 65px;
   height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .track .track__bodyHolder {
