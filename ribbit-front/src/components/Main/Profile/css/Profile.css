@@ -29,7 +29,9 @@
 }
 
 .ProfileBody__MainPicture .BodyMainPicture__CameraIcon {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 40px;
   color: #fff;
   width: 110px;
