@@ -8,20 +8,33 @@ import './css/EditProfile.css';
 class EditProfile extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      v: '',
+    };
   }
 
-  // 이미지 넣는 함수
-  HandleImgRibbit = (event) => {
+  // 프로필 이미지 넣는 함수
+  HandleProfileImgRibbit = (event) => {
     const { formData } = this.props;
 
-    formData.append(`${event.target.name}`, event.target.files[0]);
+    formData.set('profile_image', event.target.files[0]);
+  };
+
+  // 배경 이미지 넣는 함수
+  HandleBackgroundImgRibbit = (event) => {
+    const { formData } = this.props;
+
+    formData.set('background_image', event.target.files[0]);
   };
 
   HandleIntroductionRibbit = (event) => {
     const { formData } = this.props;
 
-    formData.append('introduction', event.target.value);
+    this.setState({
+      v: event.target.value,
+    });
+
+    formData.set('introduction', this.state.v);
   };
 
   // 프로필 업데이트해 주는 함수
@@ -66,7 +79,7 @@ class EditProfile extends Component {
                 ref="Upload__Profile"
                 id="Upload__Profile"
                 multiple
-                onChange={this.state.HandleImgRibbit}
+                onChange={this.HandleBackgroundImgRibbit}
               />
             </label>
           </span>
@@ -108,7 +121,7 @@ class EditProfile extends Component {
                 ref="Upload__Profile"
                 id="Upload__Profile"
                 multiple
-                onChange={this.state.HandleImgRibbit}
+                onChange={this.HandleProfileImgRibbit}
               />
             </label>
           </span>
@@ -125,6 +138,7 @@ class EditProfile extends Component {
               className="upload-introduction"
               id="Upload__Introduction"
               htmlFor="Upload__Introduction"
+              // value={this.state.v}
               onChange={this.HandleIntroductionRibbit}
             />
             <div className="edit__page-content">
