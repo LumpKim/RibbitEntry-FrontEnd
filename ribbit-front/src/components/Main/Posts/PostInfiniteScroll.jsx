@@ -29,18 +29,16 @@ class PostInfiniteScroll extends Component {
       </div>
     );
 
-    const items = post && post.map(da => <PostInfiniteItem track={da} GetUserData={GetUserData} />);
+    const item = post ? (
+      post.map(data => <PostInfiniteItem track={data} UserData={GetUserData} />)
+    ) : (
+      <span className="InfiniteScrollNotItem">팔로우 / 팔로윙 데이터가 없습니다.</span>
+    );
 
     return (
       <div className="InfiniteScrollContainer">
         <InfiniteScroll hasMore={this.state.hasMoreItems} loader={loader}>
-          <div className="InfiniteScrollContainer__Item">
-            {post !== null ? (
-              items
-            ) : (
-              <span className="InfiniteScrollNotItem">팔로우 / 팔로윙 데이터가 없습니다.</span>
-            )}
-          </div>
+          <div className="InfiniteScrollContainer__Item">{item}</div>
         </InfiniteScroll>
       </div>
     );

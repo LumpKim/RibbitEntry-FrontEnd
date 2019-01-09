@@ -97,6 +97,10 @@
   margin: 12px 0;
 }
 
+.track__body--content .track__image {
+  border: 1px solid #657786;
+}
+
 .track__bodyHolder .track__body--footer {
   width: 100%;
 }
@@ -122,6 +126,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
 }
 
 .InfiniteScrollContainer .InfiniteScrollContainer__Item {
@@ -133,4 +138,11 @@
 .InfiniteScrollContainer__Item .InfiniteScrollNotItem {
   font-size: 26px;
   color: #656565;
+}
+
+.track__body--footer__Item .track--favorite {
+  font-size: 22px;
+  border: 1px solid #657786;
+  border-radius: 25px;
+  padding: 0 16px;
 }
