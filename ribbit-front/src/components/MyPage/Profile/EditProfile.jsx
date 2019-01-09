@@ -69,15 +69,15 @@ class EditProfile extends Component {
             <label
               className="far fa-plus-square"
               id="Upload_Profile_Label"
-              htmlFor="Upload__Profile"
+              htmlFor="Upload__Background"
             >
               <input
                 type="file"
                 name="background_image"
                 style={{ display: 'none' }}
                 accept="image/*"
-                ref="Upload__Profile"
-                id="Upload__Profile"
+                ref="Upload__Background"
+                id="Upload__Background"
                 multiple
                 onChange={this.HandleBackgroundImgRibbit}
               />
