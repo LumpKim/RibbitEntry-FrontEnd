@@ -23,7 +23,6 @@ class App extends Component {
       SearchData: [],
       SearchName: '',
       RandomWriting: '',
-      RibbitLike: false,
       // 아래 부터 유저 데이터
       backgroundImage: '',
       followNum: 0,
@@ -116,28 +115,7 @@ class App extends Component {
           post: UserData.post ? UserData.post.reverse() : null,
         });
       })
-      .catch((error) => {
-        alert(error.data);
-      });
-  };
-
-  RibbitLikeToggle = (postId) => {
-    const { RibbitLike } = this.state;
-    axios
-      .patch(`http://ribbit.jaehoon.kim:5000/api/${postId}/like`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      })
-      .then((res) => {
-        this.setState({
-          RibbitLike: !RibbitLike,
-        });
-      })
-      .catch((error) => {
-        alert('서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.');
-      });
+      .catch((error) => {});
   };
 
   render() {
