@@ -25,14 +25,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .ProfileBody__MainPicture .BodyMainPicture__CameraIcon {
   display: block;
   font-size: 40px;
   color: #fff;
-  width: 40px;
-  height: 40px;
+  width: 110px;
+  height: 110px;
 }
 
 .MainProfile__Body .ProfileBody__UserData {
