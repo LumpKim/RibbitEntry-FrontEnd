@@ -102,7 +102,7 @@ class MainRibbit extends Component {
     this.setState({
       MainRibbit: e.target.value,
     });
-    this.props.formData.set('content', this.state.ribbitData);
+    this.props.formData.set('content', e.target.value);
   };
 
   // textarea태그가 글자에 맞게 늘어나도록 하는 함수

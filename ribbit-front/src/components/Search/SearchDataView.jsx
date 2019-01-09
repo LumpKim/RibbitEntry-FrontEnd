@@ -1,8 +1,12 @@
 import React from 'react';
 import './css/SearchDataView.css';
 
-const SearchDataView = ({ UserData, index, onclick }) => (
-  <div onClick={() => onclick()} key={index + 1} className="SearchBodyContent__Item">
+const SearchDataView = ({ UserData, index, GoUserPage }) => (
+  <div
+    onClick={() => GoUserPage(UserData.user_id)}
+    key={index + 1}
+    className="SearchBodyContent__Item"
+  >
     <div className="SearchBodyContentItem__Header">
       <div className="user__profile">
         {UserData.profile_image ? (

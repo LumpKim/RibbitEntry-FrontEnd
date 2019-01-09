@@ -23,6 +23,7 @@ class App extends Component {
       SearchData: [],
       SearchName: '',
       RandomWriting: '',
+      RibbitLike: false,
       // 아래 부터 유저 데이터
       backgroundImage: '',
       followNum: 0,
@@ -112,13 +113,30 @@ class App extends Component {
           nickname: UserData.user_info.nickname,
           profileImage: UserData.user_info.profile_image,
           userId: UserData.user_info.user_id,
-          post: UserData.post,
+          post: UserData.post ? UserData.post.reverse() : null,
         });
       })
       .catch((error) => {
-        if (localStorage.getItem('token')) {
-          alert('서버에서 데이터를 불러오지 못 하였습니다.');
-        }
+        alert(error.data);
+      });
+  };
+
+  RibbitLikeToggle = (postId) => {
+    const { RibbitLike } = this.state;
+    axios
+      .patch(`http://ribbit.jaehoon.kim:5000/api/${postId}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        this.setState({
+          RibbitLike: !RibbitLike,
+        });
+      })
+      .catch((error) => {
+        alert('서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.');
       });
   };
 
@@ -137,13 +155,15 @@ class App extends Component {
       profileImage,
       userId,
       post,
+      buttonStatus,
+      RibbitLike,
     } = this.state;
     return (
       <div className="App">
         <BrowserRouter>
           <React.Fragment>
             <Header
-              Whether={!!(Token !== '')}
+              Whether={Token}
               Token={Token}
               GetSearchData={this.SearchData}
               TrueSearch={this.TrueSearch}
@@ -159,7 +179,7 @@ class App extends Component {
                 path="/"
                 render={() => (
                   <Main
-                    Whether={!!(Token !== '')}
+                    Whether={Token}
                     formData={formData}
                     GetUserData={this.GetUserData}
                     backgroundImage={backgroundImage}
@@ -169,6 +189,8 @@ class App extends Component {
                     profileImage={profileImage}
                     userId={userId}
                     post={post}
+                    RibbitLikeToggle={this.RibbitLikeToggle}
+                    RibbitLike={RibbitLike}
                   />
                 )}
                 exact
