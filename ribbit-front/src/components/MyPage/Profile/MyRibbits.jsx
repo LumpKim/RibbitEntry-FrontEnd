@@ -1,5 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PostInfiniteScroll from '../../Main/Posts/PostInfiniteScroll';
 
-const MyRibbits = () => <div>MyRibbits</div>;
+class MyRibbits extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const { GetUserData } = this.props;
+    return (
+      <div>
+        <PostInfiniteScroll GetUserData={GetUserData} />
+      </div>
+    );
+  }
+}
 
 export default MyRibbits;

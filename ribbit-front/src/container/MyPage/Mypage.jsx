@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { MainProfile, EditProfile, UserInfo } from '../../components/MyPage/index';
+import {
+  MainProfile, EditProfile, UserInfo, MyRibbits,
+} from '../../components/MyPage/index';
 import './css/MyPage.css';
 
 class Mypage extends Component {
@@ -8,6 +10,11 @@ class Mypage extends Component {
     this.state = {
       buttonValue: false,
     };
+  }
+
+  componentDidMount() {
+    const { GetUserData } = this.props;
+    GetUserData();
   }
 
   // 스테이트 바꾸는 함수
@@ -31,6 +38,8 @@ class Mypage extends Component {
       userIntroduction,
       saveButtonStatus,
       formData,
+      GetUserProfileData,
+      GetUserData,
     } = this.props;
 
     return (
@@ -46,6 +55,7 @@ class Mypage extends Component {
               buttonStatus={buttonStatus}
               ChangeButtonValue={this.ChangeButtonValue}
               buttonValue={this.buttonValue}
+              GetUserData={GetUserData}
             />
             <div className="my-page">
               <div className="user-info">
@@ -55,7 +65,9 @@ class Mypage extends Component {
                   userIntroduction={userIntroduction}
                 />
               </div>
-              <div className="page-content">My Ribbits</div>
+              <div className="page-content">
+                <MyRibbits GetUserProfileData={GetUserProfileData} userAddress={userAddress} />
+              </div>
             </div>
           </div>
         ) : (
