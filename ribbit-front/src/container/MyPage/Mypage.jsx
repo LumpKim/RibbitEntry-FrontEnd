@@ -30,6 +30,7 @@ class Mypage extends Component {
       userName,
       userIntroduction,
       saveButtonStatus,
+      formData,
     } = this.props;
 
     return (
@@ -69,6 +70,7 @@ class Mypage extends Component {
             buttonStatus={saveButtonStatus}
             ChangeButtonValue={this.ChangeButtonValue}
             buttonValue={this.buttonValue}
+            formData={formData}
           />
         )}
       </div>
