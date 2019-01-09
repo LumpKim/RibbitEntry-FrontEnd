@@ -138,14 +138,15 @@ class App extends Component {
       .then((res) => {
         const UserData = res.data;
         this.setState({
-          UserBackgroundImage: UserData.backimg,
-          UserFollowNum: UserData.follow_num,
-          UserFollowerNum: UserData.follower_num,
-          UserIntroduction: UserData.introduction,
-          UserNickname: UserData.nickname,
-          UserProfileImage: UserData.proimg,
+          UserBackgroundImage: UserData.user_info.backimg,
+          UserFollowNum: UserData.user_info.follow_num,
+          UserFollowerNum: UserData.user_info.follower_num,
+          UserIntroduction: UserData.user_info.introduction,
+          UserNickname: UserData.user_info.nickname,
+          UserProfileImage: UserData.user_info.proimg,
           UserPost: UserData.post ? UserData.post.reverse() : null,
         });
+        console.log(UserData);
       })
       .catch((error) => {});
   };
@@ -186,6 +187,13 @@ class App extends Component {
       post,
       buttonStatus,
       RibbitLike,
+      UserBackgroundImage,
+      UserFollowNum,
+      UserFollowerNum,
+      UserIntroduction,
+      UserNickname,
+      UserProfileImage,
+      UserPost,
     } = this.state;
     return (
       <div className="App">
@@ -240,7 +248,25 @@ class App extends Component {
               />
               {/* 검색 페이지 */}
 
-              <Route path="/:user" component={User} exact />
+              <Route
+                path="/:user"
+                render={() => (
+                  <User
+                    GetUserProfileData={this.GetUserProfileData}
+                    buttonStatus="팔로잉"
+                    saveButtonStatus="팔로우"
+                    UserBackgroundImage={UserBackgroundImage}
+                    UserFollowNum={UserFollowNum}
+                    UserFollowerNum={UserFollowerNum}
+                    UserIntroduction={UserIntroduction}
+                    UserNickname={UserNickname}
+                    UserProfileImage={UserProfileImage}
+                    UserPost={UserPost}
+                    CampareUser
+                  />
+                )}
+                exact
+              />
               {/* 유저 정보 페이지 */}
 
               <Route
