@@ -23,7 +23,8 @@ class App extends Component {
       SearchData: [],
       SearchName: '',
       RandomWriting: '',
-      // 아래 부터 유저 데이터
+      RibbitLike: false,
+      // 아래 부터 메인 데이터
       backgroundImage: '',
       followNum: 0,
       followerNum: 0,
@@ -31,8 +32,15 @@ class App extends Component {
       nickname: '',
       profileImage: '',
       userId: '',
-      // posting 데이터
       post: [],
+      // 아래 부터 유저 페이지
+      UserBackgroundImage: '',
+      UserFollowNum: 0,
+      UserFollowerNum: 0,
+      UserIntroduction: '',
+      UserNickname: '',
+      UserProfileImage: '',
+      UserPost: [],
     };
   }
 
@@ -115,7 +123,50 @@ class App extends Component {
           post: UserData.post ? UserData.post.reverse() : null,
         });
       })
+      .catch((error) => {
+        alert(error.data);
+      });
+  };
+
+  GetUserProfileData = (userId) => {
+    axios
+      .get(`http://ribbit.jaehoon.kim:5000/api/${userId}/profile`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((res) => {
+        const UserData = res.data;
+        this.setState({
+          UserBackgroundImage: UserData.backimg,
+          UserFollowNum: UserData.follow_num,
+          UserFollowerNum: UserData.follower_num,
+          UserIntroduction: UserData.introduction,
+          UserNickname: UserData.nickname,
+          UserProfileImage: UserData.proimg,
+          UserPost: UserData.post ? UserData.post.reverse() : null,
+        });
+      })
       .catch((error) => {});
+  };
+
+  RibbitLikeToggle = (postId) => {
+    const { RibbitLike } = this.state;
+    axios
+      .patch(`http://ribbit.jaehoon.kim:5000/api/${postId}/like`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        this.setState({
+          RibbitLike: !RibbitLike,
+        });
+      })
+      .catch((error) => {
+        alert('서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.');
+      });
   };
 
   render() {
@@ -241,7 +292,6 @@ class App extends Component {
                     profileImg={profileImage}
                     buttonStatus="프로필 수정"
                     saveButtonStatus="변경 사항 저장"
-                    formData={formData}
                   />
                 )}
                 exact
