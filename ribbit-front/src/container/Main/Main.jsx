@@ -71,6 +71,7 @@ class Main extends Component {
               PostRibbitData={this.PostRibbitData}
               RibbitLikeToggle={RibbitLikeToggle}
               RibbitLike={RibbitLike}
+              GetUserData={GetUserData}
             />
             <div className="filter" />
             <ColorSelector userId={userId} GetUserData={GetUserData} />
