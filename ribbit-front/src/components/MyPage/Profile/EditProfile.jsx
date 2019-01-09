@@ -11,37 +11,42 @@ class EditProfile extends Component {
     this.state = {};
   }
 
+  // 이미지 넣는 함수
+  HandleImgRibbit = (event) => {
+    const { formData } = this.props;
+
+    formData.append(`${event.target.name}`, event.target.files[0]);
+  };
+
+  HandleIntroductionRibbit = (event) => {
+    const { formData } = this.props;
+
+    formData.append('introduction', event.target.value);
+  };
+
+  // 프로필 업데이트해 주는 함수
   PostProfileData = () => {
+    const { formData, ChangeButtonValue, userAddress } = this.props;
     axios
-      .post(
-        `http://ribbit.jaehoon.kim:5000/api/${this.props.userAddress}/settings`,
-        this.props.formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      .post(`http://ribbit.jaehoon.kim:5000/api/${userAddress}/settings`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      )
+      })
       .then((res) => {
         alert('프로필 수정이 완료되었습니다!');
       })
       .catch((error) => {
         alert('에러가 발생했습니다!');
       });
-  };
 
-  // 이미지 변수에 저장해 두는 함수
+    ChangeButtonValue();
+  };
 
   render() {
     const {
-      userAddress,
-      userName,
-      userIntroduction,
-      userFollowingData,
-      userFollowerData,
-      ChangeButtonValue,
-      buttonStatus,
+      userAddress, userName, userFollowingData, userFollowerData, buttonStatus,
     } = this.props;
 
     return (
@@ -55,11 +60,13 @@ class EditProfile extends Component {
             >
               <input
                 type="file"
+                name="background_image"
                 style={{ display: 'none' }}
                 accept="image/*"
                 ref="Upload__Profile"
                 id="Upload__Profile"
                 multiple
+                onChange={this.state.HandleImgRibbit}
               />
             </label>
           </span>
@@ -81,7 +88,7 @@ class EditProfile extends Component {
             </Link>
           </div>
           <div className="edit-button">
-            <button type="button" className="edit-or-follow" onClick={ChangeButtonValue}>
+            <button type="button" className="edit-or-follow" onClick={() => this.PostProfileData()}>
               {buttonStatus}
             </button>
           </div>
@@ -95,11 +102,13 @@ class EditProfile extends Component {
             >
               <input
                 type="file"
+                name="profile_image"
                 style={{ display: 'none' }}
                 accept="image/*"
                 ref="Upload__Profile"
                 id="Upload__Profile"
                 multiple
+                onChange={this.state.HandleImgRibbit}
               />
             </label>
           </span>
@@ -116,6 +125,7 @@ class EditProfile extends Component {
               className="upload-introduction"
               id="Upload__Introduction"
               htmlFor="Upload__Introduction"
+              onChange={this.HandleIntroductionRibbit}
             />
             <div className="edit__page-content">
               <span style={{ display: 'none' }}>프로필 수정 화면</span>

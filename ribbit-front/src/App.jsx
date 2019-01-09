@@ -263,6 +263,7 @@ class App extends Component {
                     profileImg={profileImage}
                     buttonStatus="프로필 수정"
                     saveButtonStatus="변경 사항 저장"
+                    formData={formData}
                   />
                 )}
                 exact
