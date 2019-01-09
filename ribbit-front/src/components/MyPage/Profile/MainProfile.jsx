@@ -10,10 +10,13 @@ const MainProfile = ({
   userFollowerData,
   ChangeButtonValue,
   buttonStatus,
+  saveButtonStatus,
+  buttonValue,
   profileImg,
+  CampareUser,
 }) => (
   <div>
-    {headerImg !== '' ? (
+    {headerImg ? (
       <img src={headerImg} alt="header" className="header-photo" />
     ) : (
       <div className="header-photo" />
@@ -21,30 +24,30 @@ const MainProfile = ({
     <div className="info-tab">
       <div className="gap-by-info" />
       <div className="info-elements">
-        <Link to={`/username/${userAddress}/following`}>
+        <Link to={CampareUser ? `/${userAddress}/following` : `/username/${userAddress}/following`}>
           <span className="info-name">following</span>
           <br />
           <span className="info-content">{userFollowingData}</span>
         </Link>
       </div>
       <div className="info-elements">
-        <Link to={`/username/${userAddress}/followers`}>
+        <Link to={CampareUser ? `/${userAddress}/followers` : `/username/${userAddress}/followers`}>
           <span className="info-name">followers</span>
           <br />
           <span className="info-content">{userFollowerData}</span>
         </Link>
       </div>
-      {buttonStatus !== '' ? (
+      {buttonStatus ? (
         <div className="edit-button">
           <button type="button" className="edit-or-follow" onClick={ChangeButtonValue}>
-            {buttonStatus}
+            {buttonValue ? saveButtonStatus : buttonStatus}
           </button>
         </div>
       ) : (
         <div />
       )}
     </div>
-    {profileImg !== '' ? (
+    {profileImg ? (
       <img src={profileImg} alt="profile" className="profile-photo" />
     ) : (
       <img src={RibbitIcon} alt="default-profile" className="profile-photo" />
