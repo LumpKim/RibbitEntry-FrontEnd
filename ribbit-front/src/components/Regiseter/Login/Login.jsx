@@ -30,7 +30,7 @@ class Login extends Component {
     });
 
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/login', data, {
+      .post('http://ribbit.jaehoon.kim/api/login', data, {
         headers: { 'Content-Type': 'application/json' },
       })
       .then((res) => {
