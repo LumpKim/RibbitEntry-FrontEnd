@@ -130,7 +130,7 @@ class App extends Component {
 
   GetUserProfileData = (userId) => {
     axios
-      .get(`http://ribbit.jaehoon.kim:5000/api/${userId}/profile`, {
+      .get(`http://ribbit.jaehoon.kim/api/${userId}/profile`, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -154,7 +154,7 @@ class App extends Component {
   RibbitLikeToggle = (postId) => {
     const { RibbitLike } = this.state;
     axios
-      .patch(`http://ribbit.jaehoon.kim:5000/api/${postId}/like`, {
+      .patch(`http://ribbit.jaehoon.kim/api/${postId}/like`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
