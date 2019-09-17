@@ -43,7 +43,7 @@ class ColorSelector extends Component {
     });
 
     axios
-      .post(`http://ribbit.jaehoon.kim:5000/api/${userId}/color`, data, {
+      .post(`http://ribbit.jaehoon.kim/api/${userId}/color`, data, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${localStorage.getItem('token')}`,
