@@ -107,7 +107,7 @@ class Header extends Component {
 
   PostRibbitData = (DeleteImage) => {
     axios
-      .post('http://ribbit.jaehoon.kim:5000/api/post', this.props.formData, {
+      .post('http://ribbit.jaehoon.kim/api/post', this.props.formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${this.props.Token}`,
