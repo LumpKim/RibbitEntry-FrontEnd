@@ -40,7 +40,7 @@ class Signup extends Component {
       && /^[a-z0-9_-]+/.test(NickName)
     ) {
       axios
-        .post('http://ribbit.jaehoon.kim:5000/api/signUp', data, {
+        .post('http://ribbit.jaehoon.kim/api/signUp', data, {
           headers: { 'Content-Type': 'application/json' },
         })
         .then((res) => {
