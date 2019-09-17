@@ -15,7 +15,7 @@ class PostInfiniteItem extends Component {
     const { RibbitLike } = this.state;
     axios
       .patch(
-        `http://ribbit.jaehoon.kim:5000/api/${postId}/like`,
+        `http://ribbit.jaehoon.kim/api/${postId}/like`,
         {},
         {
           headers: {
