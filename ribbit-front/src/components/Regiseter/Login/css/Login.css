@@ -1,0 +1,67 @@
+.Login__Container {
+  width: 800px;
+  height: 887px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6ecf0;
+}
+
+.Login__Container .LoginContainer__Content {
+  width: 500px;
+  height: 550px;
+}
+
+.Login__Container .Login__Header {
+  width: 500px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #84d687;
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.Login__Container .Login__Body {
+  width: 500px;
+  height: 475px;
+}
+
+.Login__Body .LoginBody__Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24px;
+}
+
+.LoginBody__Form .LoginForm__Input--Label {
+  margin: 28px 0;
+}
+
+.LoginForm__Input--Label .LoginForm__Input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #84d687;
+  margin-left: 12px;
+  font-size: 24px;
+}
+
+.LoginBody__Form .LoginForm__Submit {
+  margin-top: 35px;
+  border-radius: 50px;
+  height: 50px;
+  color: #84d687;
+  border: 1px solid #84d687;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.LoginBody__Form .LoginForm__Submit:hover {
+  background: #84d687;
+  color: #fff;
+}

@@ -1,0 +1,87 @@
+.MainContent__Profile {
+  width: 400px;
+  height: 300px;
+}
+
+.MainContent__Profile .MainProfile__Header--Background {
+  background-color: #84d687;
+  width: 100%;
+  height: 140px;
+}
+
+.MainContent__Profile .MainProfile__Body {
+  width: 100%;
+  display: flex;
+  background-color: #e8f5e9;
+}
+
+.MainProfile__Body .ProfileBody__MainPicture {
+  width: 110px;
+  height: 110px;
+  border: 6px solid #fff;
+  background-color: #84d687;
+  border-radius: 90px;
+  margin: -60px 12px 0 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ProfileBody__MainPicture .BodyMainPicture__CameraIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: #fff;
+  width: 110px;
+  height: 110px;
+}
+
+.MainProfile__Body .ProfileBody__UserData {
+  margin-top: 6px;
+}
+
+.ProfileBody__UserData .BodyUserData__UserName {
+  font-weight: bold;
+  font-size: 26px;
+  color: #000;
+  display: block;
+}
+
+.ProfileBody__UserData .BodyUserData__UserID {
+  font-size: 14px;
+  color: gray;
+}
+
+.MainContent__Profile .MainProfile__Footer {
+  width: 100%;
+  display: flex;
+  background-color: #e8f5e9;
+}
+
+.MainProfile__Footer .ProfileFooter__UserData {
+  height: 98px;
+  margin: 0 20px;
+  font-size: 26px;
+  color: gray;
+  margin-right: 50px;
+}
+
+.ProfileFooter__UserData > div {
+  position: relative;
+  top: 0;
+}
+
+.ProfileFooter__UserData .FooterUserData__DataIndex {
+  font-size: 18px;
+}
+
+.ProfileFooter__UserData > div:hover {
+  color: #84d687;
+}
+
+.ProfileFooter__UserData .FooterUserData__Data {
+  color: #84d687;
+  font-weight: bold;
+}

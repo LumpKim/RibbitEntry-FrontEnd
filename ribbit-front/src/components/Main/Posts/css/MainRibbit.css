@@ -1,0 +1,91 @@
+.MainPosts__MainRibbit {
+  width: 1050px;
+  padding: 22px 0;
+  background: rgba(132, 214, 135, 0.2);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.MainPosts__MainRibbit > .MainRibbit__Content {
+  width: 950px;
+  display: flex;
+}
+
+.MainRibbit__Content .MainRibbitContent__UserProfileCover {
+  width: 50px;
+  height: 50px;
+  background: #dee2e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  margin-right: 12px;
+  overflow: hidden;
+  margin-top: 10.5px;
+}
+
+.MainRibbitContent__UserProfileCover .MainRibbitContent__UserProfile {
+  font-size: 50px;
+  color: #a5d6a7;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MainRibbit__Content .MainRibbitContent__InputCover {
+  width: 900px;
+  border: 1px solid #a5d6a7;
+  border-radius: 15px;
+  display: flex;
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__Input {
+  width: 804px;
+  min-height: 42px;
+  border-radius: 15px;
+  border: none;
+  background: transparent;
+  line-height: 22px;
+  padding-top: 21px;
+  padding-left: 16px;
+  font-size: 20px;
+  overflow-y: hidden;
+  resize: none;
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__Input::placeholder {
+  color: rgb(132, 214, 135);
+  font-weight: bold;
+}
+
+.MainRibbitContent__InputCover .MainRibbitInputCover__HappinessIcon {
+  height: 40px;
+  font-size: 40px;
+  margin-left: 6px;
+  color: rgb(132, 214, 135);
+  cursor: pointer;
+  margin-top: 10.5px;
+}
+
+.MainPosts__MainRibbit .MainRibbit__ImageContent {
+  width: 855px;
+  margin-top: 20px;
+}
+
+.MainPosts__MainRibbit .MainMenu__Ribbit {
+  background-color: #61d665;
+  padding: 10px 24px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}

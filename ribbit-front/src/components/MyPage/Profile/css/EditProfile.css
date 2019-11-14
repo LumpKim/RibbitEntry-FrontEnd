@@ -1,0 +1,23 @@
+.edit__page {
+  display: flex;
+  flex-grow: 1;
+  margin-top: -215px;
+}
+
+.edit__user-info {
+  flex-basis: 470px;
+  padding-left: 160px;
+}
+
+.edit__page-content {
+  flex: 8;
+}
+
+.upload-introduction {
+  display: inline-block;
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 20px;
+}

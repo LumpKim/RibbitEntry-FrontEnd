@@ -1,0 +1,22 @@
+.user-name {
+    font-size: 30pt;
+}
+
+.user-address {
+    font-size: 20pt;
+    color: darkgray;
+}
+
+.user-introduction {
+    display: inline-block;
+    font-size: 15pt;
+    padding-top: 20px;
+}
+
+.user-address:hover {
+    text-decoration: underline;
+}
+
+.user-name:hover {
+    text-decoration: underline;
+}

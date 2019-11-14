@@ -1,0 +1,22 @@
+.Main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Main__Content {
+  width: 1880px;
+  padding-top: 16px;
+  display: flex;
+}
+
+.Main__Register {
+  width: 800px;
+  height: 887px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6ecf0;
+}
+
+/* #e6ecf0 <- 트위터에서 흰색 대체 */

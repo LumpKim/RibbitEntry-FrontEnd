@@ -1,0 +1,14 @@
+.my-page {
+  display: flex;
+  flex-grow: 1;
+  margin-top: -220px;
+}
+
+.user-info {
+  flex-basis: 470px;
+  padding-left: 80px;
+}
+
+.page-content {
+  flex: 8;
+}
