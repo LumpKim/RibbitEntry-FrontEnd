@@ -41,7 +41,7 @@ class EditProfile extends Component {
   PostProfileData = () => {
     const { formData, ChangeButtonValue, userAddress } = this.props;
     axios
-      .patch(`http://ribbit.jaehoon.kim/api/${userAddress}/settings`, formData, {
+      .patch(`http://ribbit-api.entrydsm.hs.kr/api/${userAddress}/settings`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

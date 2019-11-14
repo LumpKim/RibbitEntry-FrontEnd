@@ -31,7 +31,7 @@ class User extends Component {
     if (this.props.CampareUser && !buttonValue) {
       axios
         .patch(
-          `http://ribbit.jaehoon.kim/api/${this.props.match.params.user}/following`,
+          `http://ribbit-api.entrydsm.hs.kr/api/${this.props.match.params.user}/following`,
           data,
           {
             headers: {

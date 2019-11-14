@@ -19,7 +19,7 @@ class Main extends Component {
 
   PostRibbitData = (deleteData) => {
     axios
-      .post('http://ribbit.jaehoon.kim/api/post', this.props.formData, {
+      .post('http://ribbit-api.entrydsm.hs.kr/api/post', this.props.formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

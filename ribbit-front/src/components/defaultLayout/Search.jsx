@@ -22,7 +22,7 @@ class Search extends Component {
     const { searchText } = this.state;
 
     axios
-      .get(`http://ribbit.jaehoon.kim/api/search?word=${searchText}`, {
+      .get(`http://ribbit-api.entrydsm.hs.kr/api/search?word=${searchText}`, {
         headers: { 'Content-Type': 'application/json' },
       })
       .then((res) => {

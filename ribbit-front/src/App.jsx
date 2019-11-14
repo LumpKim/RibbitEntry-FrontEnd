@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import Header from './components/defaultLayout/Header';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import axios from "axios";
+import Header from "./components/defaultLayout/Header";
 import {
   Main,
   User,
@@ -11,8 +11,8 @@ import {
   Followers,
   Login,
   Signup,
-  Search,
-} from './container/index';
+  Search
+} from "./container/index";
 
 const formData = new FormData();
 
@@ -21,96 +21,96 @@ class App extends Component {
     super(props);
     this.state = {
       SearchData: [],
-      SearchName: '',
-      RandomWriting: '',
+      SearchName: "",
+      RandomWriting: "",
       RibbitLike: false,
       // 아래 부터 메인 데이터
-      backgroundImage: '',
+      backgroundImage: "",
       followNum: 0,
       followerNum: 0,
-      introduction: '소개를 작성해주세요.',
-      nickname: '',
-      profileImage: '',
-      userId: '',
+      introduction: "소개를 작성해주세요.",
+      nickname: "",
+      profileImage: "",
+      userId: "",
       post: [],
       // 아래 부터 유저 페이지
-      UserBackgroundImage: '',
+      UserBackgroundImage: "",
       UserFollowNum: 0,
       UserFollowerNum: 0,
-      UserIntroduction: '',
-      UserNickname: '',
-      UserProfileImage: '',
-      UserPost: [],
+      UserIntroduction: "",
+      UserNickname: "",
+      UserProfileImage: "",
+      UserPost: []
     };
   }
 
   RandomWrite = () => {
     const Writing = [
-      '사람은 생각하는 갈대다. -파스칼-',
-      '인간은 만물의 척도이다. -포로타고라스-',
-      '사람은 열 살까지는 천재다. -헉슬리-',
-      '산다는 것은 치열한 전투다. -로망 로랑-',
-      '눈물은 슬픔의 무성의 말. -올렌드-',
-      '슬픔은 오해당한 기쁨.  -브라우닝-',
-      '인생은 완전한 것이다. -괴테-',
-      '희열은 노동 후의 휴식. -칸트-',
-      '노동은 생명, 사상. 광명이다. -위고-',
-      '사랑이 있는 곳에 신이 있다. -스토우 부인-',
-      '연애에는 안정주가 없다. -안드레 브레보-',
-      '사랑은 삶의 대부분이다. -바이런-',
-      '우정은 날개 없는 사랑. -바이런-',
-      '친구란 또 하나의 자신이다. -이리스토텔레스-',
-      '무관심은 태만이다. -헉슬리-',
-      '지혜는 경험의 딸이다. -레오나르드다빈치-',
-      '아는 것은 힘이다. -베이컨-',
-      '미는 진을 판단한다. -아랑-',
-      '어린이는 어른의 어버이다. -워즈워드-',
-      '정복하기 위해 굴복한다. -윌리엄 쿠퍼-',
-      '책이 책을 낳는다. -볼테르-',
-      '희망은 가난한 자의 빵. -탈레스-',
-      '말로 슬픔을 덜 수 없다. -고르키-',
-      '시기 없는 행복은 없다. -발데크-',
-      '행복의 층계는 미끄럽다. -로마 격언-',
-      '생각은 계량하는 것이다. -나뇨오-',
-      '악이란 약함이다. -밀턴-',
-      '정직은 최선의 책략이다. -영국 속담-',
-      '가정은 도덕상의 학교다. -페스탈로치-',
-      '질서는 사회의 힘이다. -아미엘-',
-      '투표는 총알보다 강하다. -링컨-',
-      '정의는 사회의 지주이다. -스미드-',
-      '일은 친구를 만든다. -괴테-',
-      '정치와 같은 도박은 없다. -디즈렐리-',
-      '무질서는 붕괴이며 죽음이다. -카알 라일-',
-      '사랑은 봉사를 뜻한다. -스미드-',
+      "사람은 생각하는 갈대다. -파스칼-",
+      "인간은 만물의 척도이다. -포로타고라스-",
+      "사람은 열 살까지는 천재다. -헉슬리-",
+      "산다는 것은 치열한 전투다. -로망 로랑-",
+      "눈물은 슬픔의 무성의 말. -올렌드-",
+      "슬픔은 오해당한 기쁨.  -브라우닝-",
+      "인생은 완전한 것이다. -괴테-",
+      "희열은 노동 후의 휴식. -칸트-",
+      "노동은 생명, 사상. 광명이다. -위고-",
+      "사랑이 있는 곳에 신이 있다. -스토우 부인-",
+      "연애에는 안정주가 없다. -안드레 브레보-",
+      "사랑은 삶의 대부분이다. -바이런-",
+      "우정은 날개 없는 사랑. -바이런-",
+      "친구란 또 하나의 자신이다. -이리스토텔레스-",
+      "무관심은 태만이다. -헉슬리-",
+      "지혜는 경험의 딸이다. -레오나르드다빈치-",
+      "아는 것은 힘이다. -베이컨-",
+      "미는 진을 판단한다. -아랑-",
+      "어린이는 어른의 어버이다. -워즈워드-",
+      "정복하기 위해 굴복한다. -윌리엄 쿠퍼-",
+      "책이 책을 낳는다. -볼테르-",
+      "희망은 가난한 자의 빵. -탈레스-",
+      "말로 슬픔을 덜 수 없다. -고르키-",
+      "시기 없는 행복은 없다. -발데크-",
+      "행복의 층계는 미끄럽다. -로마 격언-",
+      "생각은 계량하는 것이다. -나뇨오-",
+      "악이란 약함이다. -밀턴-",
+      "정직은 최선의 책략이다. -영국 속담-",
+      "가정은 도덕상의 학교다. -페스탈로치-",
+      "질서는 사회의 힘이다. -아미엘-",
+      "투표는 총알보다 강하다. -링컨-",
+      "정의는 사회의 지주이다. -스미드-",
+      "일은 친구를 만든다. -괴테-",
+      "정치와 같은 도박은 없다. -디즈렐리-",
+      "무질서는 붕괴이며 죽음이다. -카알 라일-",
+      "사랑은 봉사를 뜻한다. -스미드-"
     ];
 
     this.setState({
-      RandomWriting: Writing[Math.round(Math.random() * 33)],
+      RandomWriting: Writing[Math.round(Math.random() * 33)]
     });
   };
 
   HandleWhether = (token, color) => {
-    localStorage.setItem('color', color);
-    localStorage.setItem('token', token);
+    localStorage.setItem("color", color);
+    localStorage.setItem("token", token);
   };
 
   SearchData = (data, name) => {
     this.setState({
       SearchData: data,
-      SearchName: name,
+      SearchName: name
     });
     this.RandomWrite();
   };
 
   GetUserData = () => {
     axios
-      .get('http://ribbit.jaehoon.kim:5000/api/main', {
+      .get("http://ribbit-api.entrydsm.hs.kr/api/main", {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
       })
-      .then((res) => {
+      .then(res => {
         const UserData = res.data;
         this.setState({
           backgroundImage: UserData.user_info.background_image,
@@ -120,22 +120,22 @@ class App extends Component {
           nickname: UserData.user_info.nickname,
           profileImage: UserData.user_info.profile_image,
           userId: UserData.user_info.user_id,
-          post: UserData.post ? UserData.post.reverse() : null,
+          post: UserData.post ? UserData.post.reverse() : null
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
 
-  GetUserProfileData = (userId) => {
+  GetUserProfileData = userId => {
     axios
-      .get(`http://ribbit.jaehoon.kim/api/${userId}/profile`, {
+      .get(`http://ribbit-api.entrydsm.hs.kr/api/${userId}/profile`, {
         headers: {
-          'Content-Type': 'application/json',
-        },
+          "Content-Type": "application/json"
+        }
       })
-      .then((res) => {
+      .then(res => {
         const UserData = res.data;
         this.setState({
           UserBackgroundImage: UserData.user_info.backimg,
@@ -144,34 +144,34 @@ class App extends Component {
           UserIntroduction: UserData.user_info.introduction,
           UserNickname: UserData.user_info.nickname,
           UserProfileImage: UserData.user_info.proimg,
-          UserPost: UserData.post ? UserData.post.reverse() : null,
+          UserPost: UserData.post ? UserData.post.reverse() : null
         });
         console.log(UserData);
       })
-      .catch((error) => {});
+      .catch(error => {});
   };
 
-  RibbitLikeToggle = (postId) => {
+  RibbitLikeToggle = postId => {
     const { RibbitLike } = this.state;
     axios
-      .patch(`http://ribbit.jaehoon.kim/api/${postId}/like`, {
+      .patch(`http://ribbit-api.entrydsm.hs.kr/api/${postId}/like`, {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
       })
-      .then((res) => {
+      .then(res => {
         this.setState({
-          RibbitLike: !RibbitLike,
+          RibbitLike: !RibbitLike
         });
       })
-      .catch((error) => {
-        alert('서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.');
+      .catch(error => {
+        alert("서버 에러가 발생하였습니다.\n잠시만 기다려 주세요.");
       });
   };
 
   render() {
-    const Token = localStorage.getItem('token');
+    const Token = localStorage.getItem("token");
 
     const {
       SearchData,
@@ -193,7 +193,7 @@ class App extends Component {
       UserIntroduction,
       UserNickname,
       UserProfileImage,
-      UserPost,
+      UserPost
     } = this.state;
     return (
       <div className="App">
